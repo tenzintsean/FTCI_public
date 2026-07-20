@@ -1,0 +1,313 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enabling Online Payments for FTCI — Razorpay</title>
+<style>
+  :root{
+    --maroon:#6E2639; --maroon-deep:#4A1626; --saffron:#E8A33D; --gold:#C99700;
+    --cream:#FAF6EF; --card:#FFFFFF; --ink:#2B2118; --muted:#7A6A5C;
+    --blue:#2456A6; --blue-soft:#EAF1FB; --red:#C0392B; --green:#2E7D4F;
+    --green-soft:#E9F5EE; --saffron-soft:#FFF3DC; --yellow:#E8C547;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font:16px/1.65 "Segoe UI",system-ui,-apple-system,sans-serif}
+  .flag{display:flex;height:8px}.flag div{flex:1}
+  header{background:linear-gradient(135deg,var(--maroon-deep),var(--maroon));color:#FDF6EA;
+         padding:42px 24px 34px;text-align:center}
+  header .bo{font-size:1.4rem;opacity:.9;display:block;margin-bottom:8px}
+  header h1{margin:0;font-size:2rem}
+  header p{max-width:760px;margin:12px auto 0;opacity:.93}
+  .rz{display:inline-block;background:#3395FF;color:#fff;font-weight:700;border-radius:6px;
+      padding:2px 10px;font-size:.9rem;letter-spacing:.3px}
+  .tag{display:inline-block;background:var(--saffron);color:var(--maroon-deep);font-weight:700;
+       border-radius:999px;padding:3px 15px;margin-top:16px;font-size:.92rem}
+  main{max-width:1000px;margin:0 auto;padding:24px 20px 64px}
+  section{margin-top:40px}
+  h2{color:var(--maroon);font-size:1.4rem;border-bottom:3px solid var(--saffron);
+     padding-bottom:6px;margin:0 0 16px}
+  h2 .ic{margin-right:8px}
+  h3{color:var(--maroon-deep);margin:22px 0 8px;font-size:1.1rem}
+  p{margin:10px 0}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid #Bcd}
+  a:hover{border-bottom-color:var(--blue)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 4px;font-size:.9rem}
+  .who{display:inline-block;border-radius:999px;padding:1px 11px;font-weight:700;font-size:.8rem;color:#fff}
+  .who.client{background:var(--maroon)} .who.us{background:var(--blue)} .who.both{background:var(--green)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .card{background:var(--card);border-radius:12px;padding:18px 20px;
+        box-shadow:0 2px 10px rgba(74,22,38,.08);border-top:4px solid var(--saffron)}
+  .card h4{margin:0 0 8px;color:var(--maroon)}
+  .card.blue{border-top-color:var(--blue)} .card.green{border-top-color:var(--green)}
+  .card .big{font-size:1.7rem;display:block;margin-bottom:6px}
+  .callout{background:var(--saffron-soft);border-left:5px solid var(--saffron);border-radius:8px;
+           padding:14px 18px;margin:16px 0}
+  .callout.blue{background:var(--blue-soft);border-left-color:var(--blue)}
+  .callout.green{background:var(--green-soft);border-left-color:var(--green)}
+  .callout.alert{background:#FDEBEB;border-left-color:var(--red)}
+  ol.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+  ol.steps>li{position:relative;background:var(--card);border-radius:12px;margin:12px 0;
+        padding:16px 18px 16px 60px;box-shadow:0 2px 8px rgba(74,22,38,.07)}
+  ol.steps>li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:16px;
+        width:32px;height:32px;border-radius:50%;background:var(--maroon);color:#FDF6EA;
+        display:flex;align-items:center;justify-content:center;font-weight:700}
+  ol.steps>li.us::before{background:var(--blue)} ol.steps>li.both::before{background:var(--green)}
+  ol.steps b{color:var(--maroon-deep)}
+  .doclist{list-style:none;margin:0;padding:0}
+  .doclist li{background:var(--card);border-radius:8px;padding:11px 14px 11px 40px;margin:8px 0;
+        position:relative;box-shadow:0 1px 5px rgba(74,22,38,.06)}
+  .doclist li::before{content:"📄";position:absolute;left:12px;top:11px}
+  .doclist li.opt::before{content:"➕"}
+  .doclist b{color:var(--maroon-deep)}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;
+        overflow:hidden;box-shadow:0 2px 10px rgba(74,22,38,.08);font-size:.94rem}
+  th{background:var(--maroon);color:#FDF6EA;text-align:left;padding:10px 12px}
+  td{padding:10px 12px;border-top:1px solid #EFE7DA;vertical-align:top}
+  tr:nth-child(even) td{background:#FBF8F2}
+  .pill{display:inline-block;border-radius:999px;padding:1px 9px;font-size:.78rem;font-weight:700;color:#fff}
+  .pill.free{background:var(--green)} .pill.fee{background:var(--saffron);color:var(--maroon-deep)}
+  .links{columns:2;column-gap:26px}
+  .links a{display:block;margin:7px 0;font-size:.92rem;break-inside:avoid}
+  .links .grp{font-weight:700;color:var(--maroon);margin-top:14px;break-inside:avoid}
+  .verify-badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;
+        padding:2px 12px;font-size:.82rem;font-weight:700}
+  code{background:#F1E9DC;border-radius:4px;padding:1px 5px;font-size:.9em}
+  .bo{font-family:"Noto Serif Tibetan","Jomolhari","Microsoft Himalaya",serif}
+  footer{background:var(--maroon-deep);color:#E8D9C8;text-align:center;padding:22px;font-size:.85rem}
+  @media(max-width:640px){.links{columns:1}}
+</style>
+
+<div class="flag"><div style="background:var(--blue)"></div><div style="background:#fff"></div><div style="background:var(--red)"></div><div style="background:var(--green)"></div><div style="background:var(--yellow)"></div></div>
+<header>
+  <span class="bo" lang="bo">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</span>
+  <h1>Enabling Online Payments for FTCI</h1>
+  <p>How we switch on <span class="rz">Razorpay</span> so the new website can take
+  <b>hotel booking payments</b> and <b>donations</b> directly — keeping the revenue with the
+  cooperatives instead of paying 15–25% to travel aggregators.</p>
+  <span class="tag">For FTCI review · prepared 20 July 2026 · every link verified</span>
+</header>
+
+<main>
+
+<section>
+  <h2><span class="ic">🎯</span>Why this matters</h2>
+  <div class="callout">
+    Today, hotel bookings come through Agoda and MakeMyTrip, who take a <b>15–25% commission</b>
+    on every booking. Our own website + Razorpay lets guests pay FTCI <b>directly</b>. The only
+    cost that remains is Razorpay's payment-processing fee of about <b>2% + GST</b> — and even
+    that is <b>zero</b> when a guest chooses “pay at hotel.” Razorpay is the right choice because
+    it is India's standard gateway (UPI, cards, netbanking) and, unlike Stripe, fully supports
+    Indian organizations receiving Indian payments.
+  </div>
+  <div class="cards">
+    <div class="card"><span class="big">🏨</span><h4>Hotel bookings</h4>Guests pay online (UPI/card)
+      or choose pay-at-hotel — instant confirmation, our own booking calendar.</div>
+    <div class="card green"><span class="big">🙏</span><h4>Donations</h4>A safe “Donate” button/page,
+      with automatic <b>80G receipts</b> if FTCI is 80G-registered.</div>
+    <div class="card blue"><span class="big">🔑</span><h4>FTCI stays in control</h4>The account is
+      owned by FTCI. Money settles into FTCI's own bank account. We only build the software.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">📋</span>What FTCI needs to gather (the important part)</h2>
+  <p>Because FTCI is a <b>registered cooperative society</b>, Razorpay uses its “Trust / Society”
+  verification path. Please have these ready — gathering them is the single biggest thing that
+  determines how fast we go live:</p>
+  <ul class="doclist">
+    <li><b>Entity PAN card</b> — FTCI's own PAN (not an individual's).</li>
+    <li><b>Registration certificate</b> — the Multi-State Cooperative Societies registration
+        certificate (Registrar of Cooperative Societies).</li>
+    <li><b>Bye-laws / constitutional document</b> — the society's bye-laws (equivalent of a trust
+        deed / MOA-AOA). <span class="who client">confirm exact format at signup</span></li>
+    <li><b>Board resolution / authorization letter</b> naming the <b>authorized signatory</b> who
+        will operate the Razorpay account and the linked bank account.</li>
+    <li><b>Cancelled cheque or bank statement</b> in FTCI's name — a <b>current account</b>
+        (not savings/personal). The name must exactly match the entity PAN.</li>
+    <li><b>Authorized signatory's personal PAN</b>.</li>
+    <li><b>Authorized signatory's address proof</b> — Aadhaar / passport / voter ID / driving licence.</li>
+    <li><b>Registered address proof</b> — utility bill or similar, if asked separately.</li>
+    <li class="opt"><b>(Only for donations)</b> FTCI's <b>80G certificate</b> and <b>12A</b>
+        registration — needed only if you want automatic tax-exemption donation receipts.
+        <span class="who client">check eligibility with your CA</span></li>
+  </ul>
+  <div class="callout alert">
+    <b>#1 cause of delay:</b> a <b>name mismatch</b> across PAN, bank account, and registration
+    certificate. Please make sure the entity name reads identically on all three before we submit.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🪜</span>The enablement steps, and who does each</h2>
+  <div class="legend">
+    <span><span class="who client">FTCI (you)</span> — the account owner does this</span>
+    <span><span class="who us">Us</span> — the development team does this</span>
+    <span><span class="who both">Both</span> — done together</span>
+  </div>
+  <ol class="steps">
+    <li><b>Sign up for the Razorpay account.</b> <span class="who client">FTCI</span> An authorized
+      officer registers at <a href="https://razorpay.com/" target="_blank" rel="noopener">razorpay.com</a>
+      with FTCI's official email and phone. The account <b>must belong to FTCI</b>, not to us.</li>
+    <li><b>Choose the business type.</b> <span class="who client">FTCI</span> Select
+      <b>“Registered business” → Society / Trust</b> in the onboarding form.</li>
+    <li><b>Upload the KYC documents.</b> <span class="who client">FTCI</span> Submit the documents
+      from the list above. Only FTCI can do this — Razorpay does not allow us to submit KYC on
+      your behalf. See
+      <a href="https://razorpay.com/docs/payments/business-types-kyc-documents/" target="_blank" rel="noopener">the official document checklist</a>.</li>
+    <li><b>Link the settlement bank account.</b> <span class="who client">FTCI</span> Provide FTCI's
+      current-account details; Razorpay verifies with a small test deposit. This is where all
+      booking and donation money will land.</li>
+    <li><b>Razorpay reviews &amp; activates.</b> <span class="who client">FTCI</span> Razorpay's
+      compliance team reviews — typically <b>3–5 working days</b> for a society/trust. We don't
+      wait idle: see the timeline below.</li>
+    <li><b>Give us developer access — safely.</b> <span class="who both">Both</span> FTCI invites
+      us as a limited <b>“Admin” team member</b> (not Owner), and generates the API keys, sharing
+      the secret only via a password manager — never over chat or email. Details in the Security
+      section.</li>
+    <li><b>We wire it into the website.</b> <span class="who us">Us</span> We integrate Razorpay
+      Checkout, build the booking/donation flows and refunds, and set up the webhook that confirms
+      each payment. We build and test this in <b>Test Mode</b> in parallel with your KYC.</li>
+    <li><b>Go live &amp; verify.</b> <span class="who both">Both</span> Once activated, we switch to
+      live keys, run one small real transaction end-to-end to confirm the money settles, and hand
+      you a short runbook. FTCI keeps full dashboard access throughout.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="ic">⏱️</span>Timeline — nothing is blocked by the review</h2>
+  <div class="callout blue">
+    <b>Razorpay activation for a society/trust: ~3–5 working days.</b> The moment FTCI signs up,
+    Razorpay issues <b>Test Mode</b> keys immediately — so <b>we start building and testing the
+    full payment flow the same day</b>, while your KYC is under review. Live keys switch on after
+    approval. This is why starting the sign-up <b>now</b> protects the 15 August launch.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🚀</span>Start collecting money before the full site is ready</h2>
+  <p>Razorpay has three <b>no-code</b> tools FTCI can turn on <i>today</i>, straight from the
+  dashboard, to accept donations or booking deposits even before our custom module ships — a
+  safety net for the timeline. We'll guide you through the setup; <b>you</b> keep the controls.</p>
+  <div class="cards">
+    <div class="card green"><span class="big">🔗</span><h4>Payment Links</h4>A shareable payment
+      URL — send by WhatsApp, SMS or email. No website needed.
+      <a href="https://razorpay.com/payment-links/" target="_blank" rel="noopener">product page</a></div>
+    <div class="card green"><span class="big">📄</span><h4>Payment Pages</h4>A hosted, branded
+      donation/booking page with custom fields and 80G receipts. No coding.
+      <a href="https://razorpay.com/payment-pages/" target="_blank" rel="noopener">product page</a></div>
+    <div class="card green"><span class="big">🔘</span><h4>Payment Button</h4>A ready-made “Donate”
+      button — one snippet we can drop onto the current site.
+      <a href="https://razorpay.com/payment-buttons/" target="_blank" rel="noopener">product page</a></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">💰</span>What it costs (be clear-eyed)</h2>
+  <div class="scroll"><table>
+    <tr><th>Payment method</th><th>Razorpay fee</th><th>Notes</th></tr>
+    <tr><td>UPI</td><td><span class="pill fee">~2% + GST</span></td>
+        <td>RBI mandates zero MDR, but Razorpay charges a technology fee. <b>Do not assume UPI is
+        free</b> — confirm the current rate at signup.</td></tr>
+    <tr><td>Domestic debit / credit cards</td><td><span class="pill fee">2% + 18% GST</span></td>
+        <td>≈ 2.36% effective. RuPay debit: 2% + GST.</td></tr>
+    <tr><td>Netbanking (72+ banks)</td><td><span class="pill fee">2% + 18% GST</span></td><td>—</td></tr>
+    <tr><td>Wallets / EMI / Pay-Later</td><td><span class="pill fee">2%–3% + GST</span></td>
+        <td>Premium cards (Amex/Diners) may run higher — confirm on the live pricing page.</td></tr>
+    <tr><td><b>Pay at hotel (cash/UPI at desk)</b></td><td><span class="pill free">₹0</span></td>
+        <td>No online payment = no fee. We make this the easy default.</td></tr>
+    <tr><td>Setup fee / annual charge</td><td><span class="pill free">₹0</span></td>
+        <td>No setup fee, no AMC.</td></tr>
+  </table></div>
+  <div class="callout">
+    <b>Settlement:</b> money reaches FTCI's bank in about <b>T+2 working days</b> after a payment
+    (confirm exact cycle at activation). <b>No advertised nonprofit discount</b> was found — but
+    given FTCI's cooperative-society status, it is worth <b>asking Razorpay sales for a custom
+    rate</b>. Always check the live
+    <a href="https://razorpay.com/pricing/" target="_blank" rel="noopener">pricing page</a> for
+    the current numbers.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🙏</span>Donations &amp; 80G tax receipts</h2>
+  <p>If FTCI holds <b>80G / 12A</b> registration, Razorpay can automatically issue tax-exemption
+  receipts to donors — a strong trust signal that increases giving. This is a checkbox on a
+  Payment Page once your 80G details are added.
+  <a href="https://razorpay.com/docs/payments/payment-pages/80g-receipt/" target="_blank" rel="noopener">how 80G receipts work</a> ·
+  <a href="https://razorpay.com/learn/payment-gateway-for-ngos/" target="_blank" rel="noopener">Razorpay for NGOs</a></p>
+  <div class="callout alert">
+    A hotel-operating cooperative may or may not qualify for 80G on all inflows. Please have FTCI's
+    <b>CA confirm eligibility</b> before we advertise “80G receipt” to donors.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🔒</span>Keeping FTCI in control &amp; secure</h2>
+  <div class="cards">
+    <div class="card"><h4>FTCI owns the account</h4>The Owner login, bank account and API keys all
+      belong to FTCI. We are added only as an <b>“Admin”</b> team member — we can build, but we
+      cannot change ownership or bank details.</div>
+    <div class="card blue"><h4>API keys shared safely</h4>You generate the Key ID + Secret; the
+      <b>Secret is shown only once</b>. Share it through a <b>password manager</b>, never chat or
+      email. We store it server-side, never in the website's public code.</div>
+    <div class="card"><h4>Every payment double-checked</h4>We confirm a booking only after
+      Razorpay's signed <b>webhook</b> verifies the payment — not just an on-screen “success” — so
+      no booking is confirmed without money actually received.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🔗</span>Verified reference links <span class="verify-badge">✓ every link checked live · 20 Jul 2026</span></h2>
+  <div class="links">
+    <div class="grp">Getting started</div>
+    <a href="https://razorpay.com/" target="_blank" rel="noopener">Razorpay home &amp; sign up</a>
+    <a href="https://razorpay.com/docs/payments/set-up/" target="_blank" rel="noopener">Account setup guide</a>
+    <a href="https://razorpay.com/docs/payments/dashboard/test-live-modes/" target="_blank" rel="noopener">Test mode vs Live mode</a>
+    <div class="grp">KYC &amp; documents</div>
+    <a href="https://razorpay.com/docs/payments/business-types-kyc-documents/" target="_blank" rel="noopener">KYC documents by business type</a>
+    <a href="https://razorpay.com/blog/documents-required-for-payment-gateway" target="_blank" rel="noopener">Documents-required checklist (blog)</a>
+    <a href="https://razorpay.com/docs/payments/account-activation-support/" target="_blank" rel="noopener">Account activation help</a>
+    <div class="grp">Pricing</div>
+    <a href="https://razorpay.com/pricing/" target="_blank" rel="noopener">Official pricing</a>
+    <div class="grp">Donations &amp; 80G</div>
+    <a href="https://razorpay.com/learn/payment-gateway-for-ngos/" target="_blank" rel="noopener">Razorpay for NGOs</a>
+    <a href="https://razorpay.com/docs/payments/payment-pages/80g-receipt/" target="_blank" rel="noopener">Set up 80G receipts</a>
+    <a href="https://razorpay.com/blog/accept-online-donations-with-80g-receipts/" target="_blank" rel="noopener">80G receipts announcement</a>
+    <div class="grp">No-code tools (start now)</div>
+    <a href="https://razorpay.com/payment-links/" target="_blank" rel="noopener">Payment Links</a>
+    <a href="https://razorpay.com/payment-pages/" target="_blank" rel="noopener">Payment Pages</a>
+    <a href="https://razorpay.com/payment-buttons/" target="_blank" rel="noopener">Payment Button</a>
+    <div class="grp">Multi-hotel settlement (later)</div>
+    <a href="https://razorpay.com/docs/route/" target="_blank" rel="noopener">Razorpay Route overview</a>
+    <a href="https://razorpay.com/docs/payments/route/linked-account/" target="_blank" rel="noopener">Linked Accounts setup</a>
+    <div class="grp">For the developers</div>
+    <a href="https://razorpay.com/docs/payments/dashboard/account-settings/api-keys/" target="_blank" rel="noopener">Generating API keys</a>
+    <a href="https://razorpay.com/docs/payments/dashboard/account-settings/manage-team/" target="_blank" rel="noopener">Inviting team members</a>
+    <a href="https://razorpay.com/docs/webhooks/setup-edit-payments/" target="_blank" rel="noopener">Webhook setup</a>
+    <a href="https://razorpay.com/docs/api/" target="_blank" rel="noopener">API reference</a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">✅</span>FTCI's action list — to start today</h2>
+  <div class="callout alert">
+    <ol style="margin:0 0 0 18px">
+      <li><b>Decide the authorized signatory</b> — which office-bearer will own the Razorpay account.</li>
+      <li><b>Gather the documents</b> from the checklist above; verify the entity name matches
+          exactly across PAN, bank, and registration certificate.</li>
+      <li><b>Confirm the settlement bank account</b> — the current account where money should land.</li>
+      <li><b>Sign up at <a href="https://razorpay.com/" target="_blank" rel="noopener">razorpay.com</a></b>
+          and start the Society/Trust KYC (this begins the 3–5 day clock).</li>
+      <li><b>Ask your CA</b> whether 80G donation receipts apply.</li>
+      <li><b>Tell us</b> when the account exists, and invite us as an <b>Admin</b> team member.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+<div class="flag"><div style="background:var(--blue)"></div><div style="background:#fff"></div><div style="background:var(--red)"></div><div style="background:var(--green)"></div><div style="background:var(--yellow)"></div></div>
+<footer>
+  <span class="bo" lang="bo">བཀྲ་ཤིས་བདེ་ལེགས།</span><br>
+  Prepared for the Federation of Tibetan Cooperatives in India · all links verified live 2026-07-20 ·
+  pricing/timelines to be re-confirmed with Razorpay at signup
+</footer>
