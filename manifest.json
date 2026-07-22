@@ -9,6 +9,13 @@
       "date": "2026-07-20",
       "category": "Payments",
       "description": "What FTCI needs to do to enable direct online payments via Razorpay — the KYC documents to gather, the step-by-step process, the costs, and how to start collecting payments right away."
+    },
+    {
+      "file": "prototype/index.html",
+      "title": "Guest Website — Interactive Preview",
+      "date": "2026-07-22",
+      "category": "Design",
+      "description": "Click-through preview of the new FTCI Hotels guest website — home page, all four hotel pages, rooms & rates, Board of Directors, gallery, and the direct booking flow, on desktop and mobile."
     }
   ]
 }

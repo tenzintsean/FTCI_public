@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FTCI Hotels — location map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;height:100%;font-family:'Public Sans',system-ui,sans-serif;}
+  #map{width:100%;height:100%;}
+  .leaflet-container{background:#e7e4dc;}
+  .pin{background:#7A2E2E;color:#fff;font-weight:700;border-radius:50% 50% 50% 0;width:26px;height:26px;display:flex;align-items:center;justify-content:center;transform:rotate(-45deg);box-shadow:0 3px 8px rgba(0,0,0,.3);border:2px solid #F2C14E;}
+  .pin span{transform:rotate(45deg);font-size:13px;font-family:'Noto Serif Tibetan',serif;}
+  .pin.poi{background:#2E8B57;}
+  .leaflet-popup-content{font-size:13.5px;color:#26221C;margin:10px 12px;}
+  .leaflet-popup-content b{font-family:'Hanken Grotesk','Public Sans',sans-serif;}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const lat = parseFloat(q.get('lat')), lng = parseFloat(q.get('lng'));
+  const label = q.get('label') || 'Hotel';
+  const addr = q.get('addr') || '';
+  const zoom = parseInt(q.get('zoom') || '14', 10);
+  const poiLat = parseFloat(q.get('poiLat')), poiLng = parseFloat(q.get('poiLng'));
+  const poiLabel = q.get('poiLabel') || '';
+  const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], zoom);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+  map.on('click', () => map.scrollWheelZoom.enable());
+  const icon = (cls) => L.divIcon({ className:'', html:`<div class="pin ${cls}"><span>༄</span></div>`, iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-26] });
+  L.marker([lat,lng], { icon: icon('') }).addTo(map).bindPopup(`<b>${label}</b>${addr ? '<br>'+addr : ''}`);
+  if (!isNaN(poiLat) && !isNaN(poiLng)) {
+    L.marker([poiLat,poiLng], { icon: icon('poi') }).addTo(map).bindPopup(`<b>${poiLabel}</b>`);
+    map.fitBounds([[lat,lng],[poiLat,poiLng]], { padding:[50,50] });
+  }
+</script>
+</body>
+</html>
