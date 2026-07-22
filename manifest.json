@@ -16,6 +16,13 @@
       "date": "2026-07-22",
       "category": "Design",
       "description": "Click-through preview of the new FTCI Hotels guest website — home page, all four hotel pages, rooms & rates, Board of Directors, gallery, and the direct booking flow, on desktop and mobile."
+    },
+    {
+      "file": "manager/index.html",
+      "title": "Staff Console — Manager App (mobile)",
+      "date": "2026-07-22",
+      "category": "Design",
+      "description": "Click-through preview of the FTCI Manager mobile app for hotel staff — today's brief & KPIs, bookings, rooms & rates calendar, guest inbox, and the full front-desk check-in flow (arrivals → assign room → verify ID → collect payment → keys). Best viewed on a phone."
     }
   ]
 }

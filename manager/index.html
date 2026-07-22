@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FTCI Manager — Staff Console Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=Noto+Serif+Tibetan:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#4a4a52;font-family:'Public Sans',system-ui,sans-serif;}
+  a{color:inherit;text-decoration:none;cursor:pointer;}
+  .pscroll{scrollbar-width:none;}
+  .pscroll::-webkit-scrollbar{display:none;}
+</style>
+<style>
+  html,body{overflow-x:hidden;}
+  [data-screen]{display:none;}          /* hidden until the router shows the active one */
+  [data-proto-root]{transition:transform .15s ease;}
+</style>
+</head>
+<body>
+<div data-proto-outer style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 16px;background:radial-gradient(ellipse at top,#5a4a4a,#3a363a);">
+  <div data-proto-root style="width:412px;height:840px;background:#0f0d0c;border-radius:52px;padding:12px;box-shadow:0 40px 100px rgba(0,0,0,.5);position:relative;">
+    <div style="width:100%;height:100%;background:#FAF7F0;border-radius:42px;overflow:hidden;display:flex;flex-direction:column;position:relative;">
+
+      <!-- status bar -->
+      <div style="background:#7A2E2E;color:#f7ede0;display:flex;align-items:center;justify-content:space-between;padding:12px 24px 4px;font-size:13px;font-weight:600;flex:0 0 auto;"><span>9:41</span><span style="letter-spacing:2px;">● ● ● &#9679;</span></div>
+      <!-- tricolor -->
+      <div style="display:flex;height:4px;flex:0 0 auto;"><span style="flex:1;background:#1E6FB8;"></span><span style="flex:1;background:#fff;"></span><span style="flex:1;background:#C1272D;"></span><span style="flex:1;background:#F2C14E;"></span></div>
+      <!-- header -->
+      <div style="background:#7A2E2E;color:#f7ede0;padding:10px 16px;display:flex;align-items:center;gap:11px;flex:0 0 auto;">
+        <a data-back data-backbtn style="font-size:20px;width:22px;display:none;">‹</a>
+        <span data-title style="font-weight:700;font-size:15px;font-family:'Hanken Grotesk',sans-serif;">FTCI Manager</span>
+        <span style="margin-left:auto;font-size:11px;background:rgba(242,193,78,.18);color:#F2C14E;border:1px solid rgba(242,193,78,.4);padding:3px 9px;border-radius:20px;">Sonam · Bylakuppe</span>
+      </div>
+
+      <!-- screen area -->
+      <div class="pscroll" style="flex:1;overflow-y:auto;position:relative;">
+
+        <!-- ===== HOME LAUNCHER ===== -->
+        <div data-screen="home" style="flex-direction:column;padding:18px 16px 24px;gap:16px;">
+          <div><div style="font-family:'Noto Serif Tibetan',serif;font-size:14px;color:#7A2E2E;">བཀྲ་ཤིས་བདེ་ལེགས།</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:22px;color:#26221C;">FTCI Manager</div><div style="font-size:12.5px;color:#8a8272;">Tap through the staff console — a working prototype.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
+            <a data-goto="today" style="background:#fff;border:1px solid #ece6d8;border-radius:16px;padding:16px 14px;display:flex;flex-direction:column;gap:9px;"><span style="width:38px;height:38px;border-radius:10px;background:#f3e8e8;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V20h14V9.5"/></svg></span><div style="font-weight:700;font-size:13.5px;color:#26221C;">Today</div><div style="font-size:11px;color:#8a8272;">Daily brief &amp; KPIs</div></a>
+            <a data-goto="bookings" style="background:#fff;border:1px solid #ece6d8;border-radius:16px;padding:16px 14px;display:flex;flex-direction:column;gap:9px;"><span style="width:38px;height:38px;border-radius:10px;background:#eef4f9;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E6FB8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><div style="font-weight:700;font-size:13.5px;color:#26221C;">Bookings</div><div style="font-size:11px;color:#8a8272;">Search &amp; walk-in</div></a>
+            <a data-goto="ci_arrivals" style="background:#fff;border:1px solid #ece6d8;border-radius:16px;padding:16px 14px;display:flex;flex-direction:column;gap:9px;"><span style="width:38px;height:38px;border-radius:10px;background:#f4f7f1;display:flex;align-items:center;justify-content:center;font-size:18px;">🛎</span><div style="font-weight:700;font-size:13.5px;color:#26221C;">Check-in</div><div style="font-size:11px;color:#8a8272;">Arrivals → key</div></a>
+            <a data-goto="calendar" style="background:#fff;border:1px solid #ece6d8;border-radius:16px;padding:16px 14px;display:flex;flex-direction:column;gap:9px;"><span style="width:38px;height:38px;border-radius:10px;background:#fdf4e2;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a5a12" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div style="font-weight:700;font-size:13.5px;color:#26221C;">Calendar</div><div style="font-size:11px;color:#8a8272;">Rates &amp; availability</div></a>
+          </div>
+          <div style="background:#fdf4e2;border:1px solid #f0dcae;border-radius:12px;padding:12px 14px;font-size:11.5px;color:#8a5a12;">This prototype wires the core front-desk loop. The full 20+ flows live in the design canvas.</div>
+        </div>
+
+        <!-- ===== TODAY ===== -->
+        <div data-screen="today" style="flex-direction:column;padding:16px;gap:14px;">
+          <div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:20px;color:#26221C;">Trashi delek, Sonam</div><div style="font-size:12px;color:#8a8272;">Tuesday, 21 July 2026</div></div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:14px;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-weight:700;font-size:13px;color:#26221C;">Sales · this month</span><span style="font-size:11.5px;color:#7A2E2E;background:#f3e8e8;border:1px solid #e6d3d3;padding:3px 10px;border-radius:20px;">July</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><div><div style="font-size:11px;color:#8a8272;">Bookings</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:22px;color:#26221C;">26</div></div><div><div style="font-size:11px;color:#8a8272;">Revenue</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:22px;color:#26221C;">₹76,388</div></div></div></div>
+          <div style="background:#f4f7f1;border:1px solid #dfe9d8;border-radius:14px;padding:13px 14px;"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-weight:700;font-size:12.5px;color:#2E6B3E;">Direct booking share</span><span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;color:#2E8B57;">100%</span></div><div style="height:8px;border-radius:6px;background:#dcebd3;margin:8px 0 6px;overflow:hidden;"><div style="width:100%;height:100%;background:#2E8B57;"></div></div><div style="font-size:11px;color:#5b6b52;">₹0 OTA commission this month.</div></div>
+          <a data-goto="ci_arrivals" style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:14px;display:block;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><span style="font-weight:700;font-size:13px;color:#26221C;">Today at the desk</span><span style="font-size:11px;color:#7A2E2E;font-weight:700;">Open ›</span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;"><div style="background:#eef4f9;border-radius:10px;padding:9px 4px;"><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:20px;color:#1E6FB8;">1</div><div style="font-size:10.5px;color:#5b6470;">Arrivals</div></div><div style="background:#faeeee;border-radius:10px;padding:9px 4px;"><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:20px;color:#C1272D;">2</div><div style="font-size:10.5px;color:#7a5555;">Departures</div></div><div style="background:#f4f7f1;border-radius:10px;padding:9px 4px;"><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:20px;color:#2E8B57;">3</div><div style="font-size:10.5px;color:#5b6b52;">In-house</div></div></div></a>
+          <a data-goto="bookings" style="display:flex;align-items:center;justify-content:space-between;background:#fdf4e2;border:1px solid #f0dcae;border-radius:14px;padding:14px;"><div><div style="font-weight:700;font-size:13px;color:#8a5a12;">Pay-at-hotel to collect</div><div style="font-size:11.5px;color:#9a7433;">4 upcoming arrivals</div></div><b style="font-family:'Hanken Grotesk',sans-serif;font-size:18px;color:#8a5a12;">₹12,400</b></a>
+        </div>
+
+        <!-- ===== BOOKINGS ===== -->
+        <div data-screen="bookings" style="flex-direction:column;padding:16px;gap:11px;">
+          <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #ece6d8;border-radius:10px;padding:9px 12px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg><span style="font-size:12.5px;color:#a89f8c;">Booking ID or guest name</span></div>
+          <a data-goto="ci_arrivals" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#7A2E2E;color:#fff;font-weight:700;font-size:13px;padding:11px;border-radius:10px;"><span style="font-size:16px;line-height:1;">+</span> New walk-in booking</a>
+          <a data-goto="ci_arrivals" style="display:block;background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:13px;border-left:4px solid #C1272D;"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:11px;color:#2E8B57;font-weight:700;">CONFIRMED</span><span style="font-size:11px;color:#C1272D;font-weight:700;background:#faeeee;border:1px solid #f1dcdc;padding:2px 8px;border-radius:6px;">Arriving today</span></div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;margin:5px 0 1px;color:#26221C;">Meera Venkitesh</div><div style="font-size:11.5px;color:#8a8272;">20–21 Jul · Deluxe · 2 adults</div><div style="margin-top:9px;padding-top:9px;border-top:1px solid #f0ece2;"><span style="font-size:11.5px;background:#fdf4e2;color:#8a5a12;border:1px solid #f0dcae;padding:3px 9px;border-radius:6px;font-weight:600;">Pay at hotel · ₹2,500 to collect</span></div></a>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:13px;"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:11px;color:#2E8B57;font-weight:700;">CONFIRMED</span><span style="font-size:11px;color:#5b5344;">Arriving in 1 day</span></div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;margin:5px 0 1px;color:#26221C;">Kirangowda M.</div><div style="font-size:11.5px;color:#8a8272;">21–22 Jul · Deluxe · 2 adults</div><div style="margin-top:9px;padding-top:9px;border-top:1px solid #f0ece2;"><span style="font-size:11.5px;background:#f4f7f1;color:#2E6B3E;border:1px solid #dfe9d8;padding:3px 9px;border-radius:6px;font-weight:600;">Paid online ✓</span></div></div>
+        </div>
+
+        <!-- ===== CALENDAR ===== -->
+        <div data-screen="calendar" style="flex-direction:column;padding:16px;gap:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:14px;color:#7A2E2E;">‹</span><span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;color:#26221C;">July 2026</span><span style="font-size:14px;color:#7A2E2E;">›</span></div>
+          <div style="display:flex;gap:6px;"><div style="flex:1;text-align:center;background:#7A2E2E;color:#fff;border-radius:10px;padding:8px 2px;"><div style="font-size:10px;opacity:.8;">Mon</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;">20</div><div style="font-size:9px;opacity:.85;">1 left</div></div><div style="flex:1;text-align:center;background:#fff;border:1px solid #ece6d8;border-radius:10px;padding:8px 2px;"><div style="font-size:10px;color:#8a8272;">Tue</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#26221C;">21</div><div style="font-size:9px;color:#8a8272;">1 left</div></div><div style="flex:1;text-align:center;background:#faeeee;border:1px solid #f1dcdc;border-radius:10px;padding:8px 2px;"><div style="font-size:10px;color:#C1272D;">Wed</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#C1272D;">22</div><div style="font-size:9px;color:#C1272D;">Full</div></div><div style="flex:1;text-align:center;background:#fff;border:1px solid #ece6d8;border-radius:10px;padding:8px 2px;"><div style="font-size:10px;color:#8a8272;">Thu</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#26221C;">23</div><div style="font-size:9px;color:#8a8272;">1 left</div></div></div>
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#26221C;">Mon, 20 Jul</div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:14px;"><div style="font-weight:700;font-size:13px;color:#26221C;margin-bottom:12px;">Deluxe Cottage · Twin</div><div style="display:flex;gap:8px;margin-bottom:12px;"><span style="flex:1;text-align:center;font-size:12px;font-weight:700;background:#f3e8e8;color:#7A2E2E;border:1px solid #e6d3d3;padding:8px;border-radius:9px;">● Open</span><span style="flex:1;text-align:center;font-size:12px;color:#8a8272;background:#faf7f0;border:1px solid #ece6d8;padding:8px;border-radius:9px;">Closed</span></div><div style="display:flex;gap:10px;"><div style="flex:1;"><div style="font-size:10.5px;color:#8a8272;margin-bottom:3px;">Available</div><div style="border:1px solid #ece6d8;border-radius:9px;padding:9px 12px;font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;color:#26221C;">1</div></div><div style="flex:1;"><div style="font-size:10.5px;color:#8a8272;margin-bottom:3px;">Sell rate</div><div style="border:1px solid #ece6d8;border-radius:9px;padding:9px 12px;font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:15px;color:#26221C;">₹2,500</div></div></div></div>
+          <a data-goto="calendar" style="display:block;text-align:center;background:#7A2E2E;color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:10px;">Save changes</a>
+        </div>
+
+        <!-- ===== INBOX ===== -->
+        <div data-screen="inbox" style="flex-direction:column;padding:16px;gap:11px;">
+          <div style="display:flex;gap:8px;"><span style="font-size:11.5px;background:#f3e8e8;color:#7A2E2E;border:1px solid #e6d3d3;padding:5px 12px;border-radius:20px;font-weight:600;">Unread</span><span style="font-size:11.5px;background:#fff;color:#5b5344;border:1px solid #ece6d8;padding:5px 12px;border-radius:20px;">Check-in date ▾</span></div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:12px;overflow:hidden;">
+            <div style="display:flex;gap:11px;padding:12px 13px;border-bottom:1px solid #f0ece2;"><span style="width:38px;height:38px;border-radius:50%;background:#7A2E2E;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;">MV</span><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span style="font-weight:700;font-size:13px;color:#26221C;">Meera Venkitesh</span><span style="font-size:10.5px;color:#8a8272;">14:29</span></div><div style="font-size:11.5px;color:#5b5344;">What time can I check in today?</div></div></div>
+            <div style="display:flex;gap:11px;padding:12px 13px;"><span style="width:38px;height:38px;border-radius:50%;background:#1E6FB8;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;">ZK</span><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span style="font-weight:700;font-size:13px;color:#26221C;">Zibran Khan</span><span style="font-size:10.5px;color:#8a8272;">Mon</span></div><div style="font-size:11.5px;color:#5b5344;">You booked twin — we can join the cots…</div></div></div>
+          </div>
+          <div style="background:#eef4f9;border:1px solid #d4e4f2;border-radius:14px;padding:14px;"><div style="font-weight:700;font-size:13px;color:#1E6FB8;margin-bottom:4px;">Save time with auto-reply</div><div style="font-size:11.5px;color:#5b6470;">Templates for check-in time, directions and bed preferences — sent instantly.</div></div>
+        </div>
+
+        <!-- ===== MORE ===== -->
+        <div data-screen="more" style="flex-direction:column;padding:16px;gap:10px;">
+          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a8272;font-weight:700;">Switch property</div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #7A2E2E;border-radius:12px;padding:11px 13px;"><span style="width:11px;height:11px;border-radius:50%;background:#7A2E2E;"></span><div style="flex:1;"><div style="font-weight:700;font-size:13px;color:#26221C;">Hotel Tibet · FTCI Cottages</div><div style="font-size:11px;color:#2E8B57;">Bylakuppe · Active</div></div></div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #ece6d8;border-radius:12px;padding:11px 13px;"><span style="width:11px;height:11px;border-radius:50%;border:2px solid #cfc7b6;"></span><div style="flex:1;"><div style="font-weight:700;font-size:13px;color:#26221C;">FTCI Gangtok</div><div style="font-size:11px;color:#8a8272;">Sikkim · Active</div></div></div>
+          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a8272;font-weight:700;margin-top:6px;">Manage</div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:12px;overflow:hidden;">
+            <a data-goto="calendar" style="display:flex;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #f0ece2;font-size:13px;color:#26221C;">Rooms &amp; rates <span style="color:#c9c0ad;">›</span></a>
+            <div style="display:flex;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #f0ece2;font-size:13px;color:#26221C;">Payments &amp; pay-at-hotel <span style="font-size:10px;color:#8a5a12;background:#fdf4e2;border:1px solid #f0dcae;padding:2px 7px;border-radius:6px;">Encouraged</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 14px;font-size:13px;color:#26221C;">Staff &amp; permissions <span style="color:#c9c0ad;">›</span></div>
+          </div>
+        </div>
+
+        <!-- ===== CHECK-IN: ARRIVALS ===== -->
+        <div data-screen="ci_arrivals" style="flex-direction:column;padding:16px;gap:11px;">
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:17px;color:#26221C;">Arrivals · today</div>
+          <a data-goto="ci_assign" style="display:block;background:#fff;border:1px solid #ece6d8;border-left:4px solid #2E8B57;border-radius:12px;padding:12px 13px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:700;font-size:13px;color:#26221C;">Meera Venkitesh</span><span style="font-size:10px;font-weight:700;color:#2E6B3E;background:#f4f7f1;border:1px solid #dfe9d8;padding:3px 8px;border-radius:6px;">Room ready</span></div><div style="font-size:11.5px;color:#8a8272;margin-top:3px;">Deluxe · 1 night · ETA 12:00</div><div style="margin-top:7px;"><span style="font-size:10px;color:#8a5a12;background:#fdf4e2;border:1px solid #f0dcae;padding:2px 8px;border-radius:5px;">₹2,000 to collect</span></div></a>
+          <div style="background:#fff;border:1px solid #ece6d8;border-left:4px solid #F2A93B;border-radius:12px;padding:12px 13px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:700;font-size:13px;color:#26221C;">Sarah Müller 🇩🇪</span><span style="font-size:10px;font-weight:700;color:#8a5a12;background:#fdf4e2;border:1px solid #f0dcae;padding:3px 8px;border-radius:6px;">Cleaning</span></div><div style="font-size:11.5px;color:#8a8272;margin-top:3px;">Deluxe · 4 nights · ETA 15:00</div><div style="margin-top:7px;"><span style="font-size:10px;color:#C1272D;background:#faeeee;border:1px solid #f1dcdc;padding:2px 8px;border-radius:5px;">Form C required</span></div></div>
+          <div style="background:#eef4f9;border:1px solid #d4e4f2;border-radius:10px;padding:10px 12px;font-size:11px;color:#5b6470;">Tap Meera to run the check-in.</div>
+        </div>
+
+        <!-- ===== CHECK-IN: ASSIGN ===== -->
+        <div data-screen="ci_assign" style="flex-direction:column;padding:16px;gap:12px;">
+          <div style="display:flex;gap:6px;"><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span><span style="flex:1;height:4px;border-radius:2px;background:#e6ddcb;"></span><span style="flex:1;height:4px;border-radius:2px;background:#e6ddcb;"></span></div>
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#26221C;">Assign a room</div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:12px;padding:12px 14px;font-size:12px;color:#5b5344;">Booked: <b>Deluxe Cottage</b> · twin · 1 night</div>
+          <label style="display:flex;align-items:center;gap:11px;background:#fff;border:2px solid #7A2E2E;border-radius:12px;padding:12px 13px;"><span style="width:18px;height:18px;border-radius:50%;border:5px solid #7A2E2E;flex:0 0 auto;"></span><div style="flex:1;"><div style="font-weight:700;font-size:12.5px;color:#26221C;">Cottage 1 · Deluxe</div><div style="font-size:11px;color:#8a8272;">Poolside · twin · cleaned 11:20</div></div><span style="font-size:10px;font-weight:700;color:#2E6B3E;background:#f4f7f1;border:1px solid #dfe9d8;padding:3px 8px;border-radius:6px;">Ready</span></label>
+          <label style="display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #ece6d8;border-radius:12px;padding:12px 13px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #cfc7b6;flex:0 0 auto;"></span><div style="flex:1;"><div style="font-weight:700;font-size:12.5px;color:#26221C;">Cottage 6 · Deluxe</div><div style="font-size:11px;color:#8a8272;">Garden · twin · cleaned 09:50</div></div><span style="font-size:10px;font-weight:700;color:#2E6B3E;background:#f4f7f1;border:1px solid #dfe9d8;padding:3px 8px;border-radius:6px;">Ready</span></label>
+          <a data-goto="ci_register" style="display:block;text-align:center;background:#7A2E2E;color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:10px;">Assign Cottage 1 · continue</a>
+        </div>
+
+        <!-- ===== CHECK-IN: REGISTER ===== -->
+        <div data-screen="ci_register" style="flex-direction:column;padding:16px;gap:12px;">
+          <div style="display:flex;gap:6px;"><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span><span style="flex:1;height:4px;border-radius:2px;background:#e6ddcb;"></span></div>
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:16px;color:#26221C;">Verify &amp; register</div>
+          <div style="display:flex;gap:10px;"><div style="flex:1;background:#26221C;border-radius:12px;padding:14px 10px;text-align:center;color:#f3f0e9;"><div style="font-size:20px;">📷</div><div style="font-size:11px;font-weight:700;margin-top:3px;">Aadhaar / ID</div><div style="font-size:9.5px;opacity:.7;">Captured ✓</div></div><div style="flex:1;background:#fff;border:1px solid #ece6d8;border-radius:12px;padding:12px;font-size:11.5px;color:#5b5344;display:flex;align-items:center;">Meera Venkitesh<br>•••• 4821 · verified</div></div>
+          <div style="background:#f4f7f1;border:1px solid #dfe9d8;border-radius:12px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;color:#5b6b52;">Domestic guest · no Form C</span><span style="color:#2E8B57;font-weight:800;">✓</span></div>
+          <a data-goto="ci_collect" style="display:block;text-align:center;background:#7A2E2E;color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:10px;">Continue to payment</a>
+        </div>
+
+        <!-- ===== CHECK-IN: COLLECT ===== -->
+        <div data-screen="ci_collect" style="flex-direction:column;padding:16px;gap:12px;">
+          <div style="display:flex;gap:6px;"><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span><span style="flex:1;height:4px;border-radius:2px;background:#7A2E2E;"></span></div>
+          <div style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:14px;font-size:12.5px;"><div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#5b5344;"><span>Room total</span><span>₹2,500</span></div><div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#2E6B3E;"><span>Deposit paid</span><span>−₹500</span></div><div style="display:flex;justify-content:space-between;border-top:1px solid #f0ece2;padding-top:8px;font-size:15px;"><b style="color:#26221C;">Balance to collect</b><b style="font-family:'Hanken Grotesk',sans-serif;color:#8a5a12;">₹2,000</b></div></div>
+          <div style="display:flex;gap:8px;"><span style="flex:1;text-align:center;font-size:12px;font-weight:700;color:#fff;background:#7A2E2E;border-radius:9px;padding:11px 4px;">UPI</span><span style="flex:1;text-align:center;font-size:12px;color:#5b5344;background:#fff;border:1px solid #ece6d8;border-radius:9px;padding:11px 4px;">Cash</span><span style="flex:1;text-align:center;font-size:12px;color:#5b5344;background:#fff;border:1px solid #ece6d8;border-radius:9px;padding:11px 4px;">Card</span></div>
+          <div style="background:#f4f7f1;border:1px solid #dfe9d8;border-radius:12px;padding:14px;text-align:center;"><div style="font-size:11px;color:#5b6b52;margin-bottom:8px;">Show guest the QR</div><div style="width:96px;height:96px;margin:0 auto;background:repeating-conic-gradient(#26221C 0 25%,#fff 0 50%) 50%/16px 16px;border-radius:8px;border:4px solid #fff;box-shadow:0 0 0 1px #dfe9d8;"></div></div>
+          <a data-goto="ci_done" style="display:block;text-align:center;background:#2E8B57;color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:10px;">Mark ₹2,000 paid &amp; check in</a>
+        </div>
+
+        <!-- ===== CHECK-IN: DONE ===== -->
+        <div data-screen="ci_done" style="flex-direction:column;padding:0 0 16px;gap:0;">
+          <div style="background:#26221C;color:#f3f0e9;padding:26px 16px;text-align:center;"><div style="width:52px;height:52px;border-radius:50%;background:#2E8B57;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:26px;font-weight:800;">✓</div><div style="font-family:'Noto Serif Tibetan',serif;font-size:12px;color:#F2C14E;">ཕེབས་བསུ་ཞུ།</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:18px;">Meera is checked in</div><div style="font-size:11.5px;opacity:.7;">Cottage 1 · departs 21 Jul, 11:00</div></div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+            <div style="background:#fff;border:1px solid #ece6d8;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;"><div><div style="font-size:11px;color:#8a8272;">Room key</div><div style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:22px;color:#26221C;">Cottage 1</div></div><div style="text-align:right;"><div style="font-size:11px;color:#2E6B3E;font-weight:700;">Paid in full ✓</div><div style="font-size:11px;color:#8a8272;">GST invoice sent</div></div></div>
+            <div style="background:#f4f7f1;border:1px solid #dfe9d8;border-radius:12px;padding:11px 13px;font-size:11.5px;color:#5b6b52;">Cottage 1 marked <b>occupied</b> — housekeeping &amp; availability updated.</div>
+            <a data-goto="ci_arrivals" style="display:block;text-align:center;background:#7A2E2E;color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:10px;">Next arrival →</a>
+            <a data-goto="today" style="display:block;text-align:center;font-size:13px;color:#7A2E2E;font-weight:700;background:#f3e8e8;border:1px solid #e6d3d3;border-radius:10px;padding:11px;">Back to Today</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- bottom tab bar -->
+      <div style="border-top:1px solid #ece6d8;background:#fff;display:flex;padding:8px 2px 12px;flex:0 0 auto;">
+        <a data-goto="today" data-tab="today" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><svg data-ico width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V20h14V9.5"/></svg><span data-lbl style="font-size:9.5px;color:#a89f8c;">Today</span></a>
+        <a data-goto="bookings" data-tab="bookings" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><svg data-ico width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span data-lbl style="font-size:9.5px;color:#a89f8c;">Bookings</span></a>
+        <a data-goto="calendar" data-tab="calendar" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><svg data-ico width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span data-lbl style="font-size:9.5px;color:#a89f8c;">Calendar</span></a>
+        <a data-goto="inbox" data-tab="inbox" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><svg data-ico width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-5.3A8 8 0 1 1 21 11.5z"/></svg><span data-lbl style="font-size:9.5px;color:#a89f8c;">Inbox</span></a>
+        <a data-goto="more" data-tab="more" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><svg data-ico width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a89f8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span data-lbl style="font-size:9.5px;color:#a89f8c;">More</span></a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var TITLES={"home": "FTCI Manager", "today": "Today", "bookings": "Bookings", "calendar": "Rates & availability", "inbox": "Guest messages", "more": "More \u00b7 Settings", "ci_arrivals": "Check-in \u00b7 arrivals", "ci_assign": "Check in \u00b7 Meera V.", "ci_register": "Check in \u00b7 Meera V.", "ci_collect": "Check in \u00b7 payment", "ci_done": "Checked in"}, TABFOR={"today": "today", "bookings": "bookings", "calendar": "calendar", "inbox": "inbox", "more": "more", "ci_arrivals": "bookings", "ci_assign": "bookings", "ci_register": "bookings", "ci_collect": "bookings", "ci_done": "bookings"};
+var stack=[], cur='home';
+function sync() {
+  var root=document.querySelector('[data-proto-root]'); if(!root) return;
+  root.querySelectorAll('[data-screen]').forEach(function(s){
+    s.style.display=(s.getAttribute('data-screen')===cur)?'flex':'none';
+  });
+  var area=root.querySelector('.pscroll'); if(area) area.scrollTop=0;
+  var title=root.querySelector('[data-title]'); if(title) title.textContent=TITLES[cur]||'FTCI Manager';
+  var bk=root.querySelector('[data-backbtn]'); if(bk) bk.style.display=stack.length?'inline':'none';
+  var activeTab=TABFOR[cur]||null;
+  root.querySelectorAll('[data-tab]').forEach(function(t){
+    var on=t.getAttribute('data-tab')===activeTab, col=on?'#7A2E2E':'#a89f8c';
+    var ico=t.querySelector('[data-ico]'); if(ico) ico.setAttribute('stroke',col);
+    var lbl=t.querySelector('[data-lbl]'); if(lbl){ lbl.style.color=col; lbl.style.fontWeight=on?'700':'400'; }
+  });
+}
+function go(id) { if(!id||id===cur) return; stack.push(cur); cur=id; sync(); }
+function back() { cur=stack.pop()||'home'; sync(); }
+document.addEventListener('click', function(e) {
+  var b=e.target.closest('[data-back]');
+  if(b) { e.preventDefault(); back(); return; }
+  var g=e.target.closest('[data-goto]');
+  if(g) { e.preventDefault(); go(g.getAttribute('data-goto')); }
+});
+// Scale the fixed 412px phone to fit the viewport (staff hold this on a handset).
+function fitPhone() {
+  var root=document.querySelector('[data-proto-root]'); if(!root) return;
+  var vw=document.documentElement.clientWidth, vh=window.innerHeight;
+  var s=Math.min(1, (vw-16)/436, (vh-16)/864);
+  root.style.transform='scale('+s+')';
+}
+addEventListener('resize', fitPhone);
+fitPhone(); sync();
+</script>
+</body>
+</html>
