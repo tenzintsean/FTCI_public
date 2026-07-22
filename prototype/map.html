@@ -21,12 +21,14 @@
 <div id="map"></div>
 <script>
   const q = new URLSearchParams(location.search);
+  // Escape query-supplied text before it reaches bindPopup's HTML (reflected-XSS guard).
+  const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const lat = parseFloat(q.get('lat')), lng = parseFloat(q.get('lng'));
-  const label = q.get('label') || 'Hotel';
-  const addr = q.get('addr') || '';
+  const label = esc(q.get('label') || 'Hotel');
+  const addr = esc(q.get('addr') || '');
   const zoom = parseInt(q.get('zoom') || '14', 10);
   const poiLat = parseFloat(q.get('poiLat')), poiLng = parseFloat(q.get('poiLng'));
-  const poiLabel = q.get('poiLabel') || '';
+  const poiLabel = esc(q.get('poiLabel') || '');
   const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], zoom);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '© OpenStreetMap contributors'
