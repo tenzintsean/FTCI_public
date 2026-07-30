@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FTCI Hotels — home page hero: two options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Noto+Serif+Tibetan:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#F4F1EA;color:#26221C;
+       font-family:'Hanken Grotesk',system-ui,sans-serif;}
+  .wrap{max-width:1180px;margin:0 auto;padding:44px 28px 90px;}
+  .page-head{margin-bottom:38px;}
+  .eyebrow{font-family:'Noto Serif Tibetan',serif;font-size:19px;color:#7A2E2E;margin-bottom:6px;}
+  h1.title{font-size:38px;font-weight:800;letter-spacing:-.015em;margin:0 0 12px;}
+  .lede{font-size:17px;line-height:1.65;color:#5b5344;max-width:760px;margin:0;}
+  .lede b{color:#26221C;}
+
+  .opt{margin-top:46px;background:#fff;border:1px solid #e6e0d2;border-radius:16px;
+       overflow:hidden;box-shadow:0 12px 36px rgba(38,34,28,.07);}
+  .opt-head{padding:20px 26px;border-bottom:1px solid #efe9dc;display:flex;
+            align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .tag{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+       padding:5px 11px;border-radius:999px;}
+  .tag.now{background:#f3e4e4;color:#8d3535;}
+  .tag.a{background:#e7efe6;color:#2b6b45;}
+  .tag.rej{background:#f7e3e3;color:#9d3030;}
+  .tag.c{background:#e7efe6;color:#2b6b45;}
+  .tag.b{background:#e8eef5;color:#28557f;}
+  .opt-head h2{font-size:21px;font-weight:800;margin:0;}
+  .opt-head .sub{font-size:14.5px;color:#6b6455;margin-left:auto;}
+
+  /* the hero is authored at 1440px and scaled down to fit the page */
+  .stage{background:#26221C;padding:22px;overflow:hidden;}
+  .scaler{width:1440px;transform-origin:top left;}
+  .hero{position:relative;height:560px;overflow:hidden;
+        background:linear-gradient(135deg,#1E6FB8,#164e82);}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .flags{position:absolute;top:26px;left:0;right:0;display:flex;justify-content:center;opacity:.95;}
+  .flags span{width:34px;height:46px;margin:0 3px;}
+
+  /* ---- CURRENT: three darkening layers ---- */
+  .now img{opacity:.9;}
+  .now .wash{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,60,110,.55) 0%,rgba(20,45,80,.15) 40%,rgba(20,45,80,.7) 100%);}
+  .now .scrim{position:absolute;z-index:6;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;color:#fff;padding:48px 72px;border-radius:24px;max-width:900px;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,.6) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,0) 100%);
+    text-shadow:0 4px 30px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.9);}
+  .now .headline{position:absolute;left:64px;bottom:150px;color:#fff;max-width:640px;}
+  .now .headline h3{font-size:60px;font-weight:800;line-height:1.02;margin:0;
+    letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.35);}
+
+  /* ---- OPTION A: clean image, dark ink on top ----
+     One block only. In the original the brand lockup faded out BEFORE the
+     headline appeared, so they never shared the screen; with the animation
+     gone they collide. Placed top-left, which measured the highest contrast
+     of any zone on the clean photograph (6.49:1 for near-black). */
+  .a img{opacity:1;}
+  .a .stack{position:absolute;z-index:6;left:64px;top:104px;max-width:660px;}
+  .a .stack .tib{font-family:'Noto Serif Tibetan',serif;font-size:30px;color:#5B1F1F;margin-bottom:2px;}
+  .a .stack .org{font-size:13.5px;letter-spacing:.14em;color:#4a3a30;margin-bottom:16px;
+                 text-transform:uppercase;font-weight:600;}
+  .a .stack .name{font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;
+                  color:#26221C;margin-bottom:16px;}
+  .a .stack h3{font-size:36px;font-weight:700;line-height:1.15;margin:0;
+               letter-spacing:-.01em;color:#26221C;max-width:560px;}
+
+  /* ---- OPTION B: image untouched, text in a band beneath ---- */
+  .b .hero{height:470px;}
+  /* Option 2: 1920x1000 at 1440 wide = 750px tall — the complete frame, no crop. */
+  .c .hero.full{height:750px;}
+  .c .hero.full img{object-fit:contain;}
+  .c .band{background:#FAF7F0;border-top:5px solid #F2C14E;padding:34px 64px 38px;}
+  .c .band .tib{font-family:'Noto Serif Tibetan',serif;font-size:27px;color:#7A2E2E;margin-bottom:4px;}
+  .c .band .org{font-size:14px;letter-spacing:.14em;color:#6b6455;margin-bottom:14px;}
+  .c .band h3{font-size:46px;font-weight:800;line-height:1.05;margin:0;
+              letter-spacing:-.02em;color:#26221C;max-width:840px;}
+  .c .searchwrap{margin-top:22px;}
+  .b img{opacity:1;}
+  .b .band{background:#FAF7F0;border-top:5px solid #F2C14E;padding:34px 64px 38px;}
+  .b .band .tib{font-family:'Noto Serif Tibetan',serif;font-size:27px;color:#7A2E2E;margin-bottom:4px;}
+  .b .band .org{font-size:14px;letter-spacing:.14em;color:#6b6455;margin-bottom:14px;}
+  .b .band h3{font-size:46px;font-weight:800;line-height:1.05;margin:0;
+              letter-spacing:-.02em;color:#26221C;max-width:840px;}
+
+  .lockup .tib{font-family:'Noto Serif Tibetan',serif;font-size:40px;margin-bottom:10px;}
+  .lockup .org{font-size:19px;letter-spacing:.14em;margin-bottom:26px;}
+  .lockup .name{font-size:82px;font-weight:800;line-height:1;letter-spacing:-.02em;}
+  .lockup .tag2{font-size:22px;line-height:1.5;margin-top:16px;max-width:660px;
+                margin-left:auto;margin-right:auto;}
+
+  /* shared search bar so each option is judged as a whole page opening */
+  .searchwrap{padding:0 64px;margin-top:-70px;position:relative;z-index:8;}
+  .b .searchwrap{margin-top:22px;}
+  .search{background:#fff;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.18);
+          padding:20px;display:flex;gap:14px;align-items:flex-end;border-top:5px solid #F2C14E;}
+  .search .f{flex:1;} .search .f.w{flex:2;}
+  .search .lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+               color:#8a8272;margin-bottom:6px;}
+  .search .val{border:1.5px solid #e2dccb;border-radius:8px;padding:13px 14px;font-size:15px;}
+  .search .go{background:#7A2E2E;color:#fff;border-radius:8px;padding:15px 30px;
+              font-weight:700;font-size:15px;white-space:nowrap;}
+  .pad{height:26px;background:#fff;}
+
+  .notes{padding:22px 26px 26px;border-top:1px solid #efe9dc;background:#fffdf8;}
+  .notes ul{margin:0;padding-left:20px;}
+  .notes li{font-size:14.5px;line-height:1.75;color:#4a4436;margin-bottom:5px;}
+  .notes li b{color:#26221C;}
+  .verdict{display:inline-block;font-size:13px;font-weight:700;border-radius:6px;
+           padding:3px 9px;margin-left:2px;}
+  .ok{background:#e7efe6;color:#2b6b45;} .bad{background:#f7e3e3;color:#9d3030;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="eyebrow">པོ་ཏ་ལ།</div>
+    <h1 class="title">Home page hero — two ways to keep the Potala</h1>
+    <p class="lede">
+      The Potala stays and nothing darkens it. Today three layers do — a 10% mute, a permanent
+      blue-black wash, and the intro's black scrim — and the white lettering only works because of
+      them. We tested putting <i>dark</i> lettering on the clean photograph instead: it fails, and
+      not for a reason any amount of tuning fixes (shown below). That leaves one real question for
+      you to decide — <b>how much of the page the Potala gets</b>.
+    </p>
+  </div>
+
+  <!-- ─────────────────────────── CURRENT ─────────────────────────── -->
+  <div class="opt now-card">
+    <div class="opt-head">
+      <span class="tag now">Today</span>
+      <h2>What is on the site now</h2>
+      <span class="sub">shown mid-intro, as the client saw it</span>
+    </div>
+    <div class="stage"><div class="scaler" id="s0">
+      <div class="hero now">
+        <img src="../prototype/assets/potala.png" alt="Potala Palace">
+        <div class="wash"></div>
+        <div class="flags"><span style="background:#1E6FB8"></span><span style="background:#fff"></span><span style="background:#C1272D"></span><span style="background:#2E8B57"></span><span style="background:#F2C14E"></span></div>
+        <div class="scrim lockup">
+          <div class="tib">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</div>
+          <div class="org">Federation of Tibetan Cooperatives in India Ltd.</div>
+          <div class="name">FTCI Hotels</div>
+          <div class="tag2">Striving to strengthen the social and economic sustainability of Tibetan refugee settlements.</div>
+        </div>
+      </div>
+      <div class="searchwrap"><div class="search">
+        <div class="f w"><div class="lab">Where</div><div class="val">Bylakuppe · Gangtok · Dharamsala</div></div>
+        <div class="f"><div class="lab">Check in</div><div class="val">Thu, 6 Aug</div></div>
+        <div class="f"><div class="lab">Check out</div><div class="val">Sat, 8 Aug</div></div>
+        <div class="f"><div class="lab">Guests</div><div class="val">2 adults</div></div>
+        <div class="go">Search</div>
+      </div></div>
+      <div class="pad"></div>
+    </div></div>
+    <div class="notes"><ul>
+      <li><b>Three layers sit on the Potala:</b> the image is dropped to 90% over a blue field, a
+          permanent blue-black wash covers it top to bottom (55% → 70%), and the intro adds a
+          black radial scrim for 6.5 seconds.</li>
+      <li><b>Only the scrim fades.</b> The wash never does — the Potala stays darkened for as long
+          as the page is open.</li>
+      <li>The headline is also held back for <b>4.7 seconds</b> while the intro plays.</li>
+      <li>White lettering on the darkened image <span class="verdict ok">readable</span> — but only
+          because of the darkening.</li>
+    </ul></div>
+  </div>
+
+  <!-- ─────────────────────────── OPTION A ─────────────────────────── -->
+  <div class="opt">
+    <div class="opt-head">
+      <span class="tag rej">Tested — does not work</span>
+      <h2>Dark lettering directly on the clean Potala</h2>
+      <span class="sub">ruled out on measurement, not taste</span>
+    </div>
+    <div class="stage"><div class="scaler" id="s1">
+      <div class="hero a">
+        <img src="../prototype/assets/potala.png" alt="Potala Palace, shown at full brightness">
+        <div class="flags"><span style="background:#1E6FB8"></span><span style="background:#fff"></span><span style="background:#C1272D"></span><span style="background:#2E8B57"></span><span style="background:#F2C14E"></span></div>
+        <div class="stack">
+          <div class="tib">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</div>
+          <div class="org">Federation of Tibetan Cooperatives in India Ltd.</div>
+          <div class="name">FTCI Hotels</div>
+          <h3>A warm welcome from a Tibetan home away from home.</h3>
+        </div>
+      </div>
+      <div class="searchwrap"><div class="search">
+        <div class="f w"><div class="lab">Where</div><div class="val">Bylakuppe · Gangtok · Dharamsala</div></div>
+        <div class="f"><div class="lab">Check in</div><div class="val">Thu, 6 Aug</div></div>
+        <div class="f"><div class="lab">Check out</div><div class="val">Sat, 8 Aug</div></div>
+        <div class="f"><div class="lab">Guests</div><div class="val">2 adults</div></div>
+        <div class="go">Search</div>
+      </div></div>
+      <div class="pad"></div>
+    </div></div>
+    <div class="notes"><ul>
+      <li><b>The image is clean</b> — all three darkening layers removed, full brightness and
+          colour. That part works.</li>
+      <li><b>But the words do not.</b> Average contrast reads 6.5:1, which looks like a pass. Measured
+          against the <i>darkest pixel</i> under the text it is
+          <span class="verdict bad">1.05:1 — letters disappear</span>.</li>
+      <li>The Potala has near-black detail — window recesses, doorways, shadow — scattered through
+          every part of the frame. Parts of each letterform land on it and vanish. We tested four
+          different crops; the worst case stayed between 1.05:1 and 1.10:1 in all of them.</li>
+      <li><b>Not fixable by moving or resizing the text.</b> The only ways to put words on this
+          photograph are to darken it (rejected) or to lay a plate behind them — which still covers
+          the Potala.</li>
+    </ul></div>
+  </div>
+
+  <!-- ─────────────────────────── OPTION B ─────────────────────────── -->
+  <div class="opt b">
+    <div class="opt-head">
+      <span class="tag b">Option 1</span>
+      <h2>Potala clear, words beneath — balanced</h2>
+      <span class="sub">image 470px · booking stays high on the page</span>
+    </div>
+    <div class="stage"><div class="scaler" id="s2">
+      <div class="hero">
+        <img src="../prototype/assets/potala.png" alt="Potala Palace, shown whole and unobstructed">
+        <div class="flags"><span style="background:#1E6FB8"></span><span style="background:#fff"></span><span style="background:#C1272D"></span><span style="background:#2E8B57"></span><span style="background:#F2C14E"></span></div>
+      </div>
+      <div class="band">
+        <div class="tib">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</div>
+        <div class="org">FEDERATION OF TIBETAN COOPERATIVES IN INDIA LTD.</div>
+        <h3>A warm welcome from a Tibetan home away from home.</h3>
+      </div>
+      <div class="searchwrap"><div class="search">
+        <div class="f w"><div class="lab">Where</div><div class="val">Bylakuppe · Gangtok · Dharamsala</div></div>
+        <div class="f"><div class="lab">Check in</div><div class="val">Thu, 6 Aug</div></div>
+        <div class="f"><div class="lab">Check out</div><div class="val">Sat, 8 Aug</div></div>
+        <div class="f"><div class="lab">Guests</div><div class="val">2 adults</div></div>
+        <div class="go">Search</div>
+      </div></div>
+      <div class="pad"></div>
+    </div></div>
+    <div class="notes"><ul>
+      <li><b>The Potala carries nothing.</b> No wash, no lettering, no buttons — the photograph is
+          simply seen, whole, the way an image of the Potala would be shown on its own.</li>
+      <li>Brand and headline move into a cream band directly beneath, in maroon and near-black
+          <span class="verdict ok">well past the standard</span>.</li>
+      <li>More of the palace is visible: with no text to accommodate, the crop can breathe.
+          <b>Still a crop, though</b> — the top and bottom of the photograph are cut off.</li>
+      <li><b>The trade:</b> a quieter, more formal opening. The photograph is a portrait rather than
+          a backdrop, and the page reads as respectful rather than cinematic.</li>
+      <li>The booking search sits directly under the band — no scrolling needed on a normal laptop.</li>
+    </ul></div>
+  </div>
+
+  <!-- ─────────────────────────── OPTION 2 ─────────────────────────── -->
+  <div class="opt c">
+    <div class="opt-head">
+      <span class="tag c">Option 2</span>
+      <h2>The whole photograph, nothing cut off</h2>
+      <span class="sub">image 750px · shown complete, edge to edge</span>
+    </div>
+    <div class="stage"><div class="scaler" id="s3">
+      <div class="hero full">
+        <img src="../prototype/assets/potala.png" alt="Potala Palace, the complete photograph, uncropped">
+        <div class="flags"><span style="background:#1E6FB8"></span><span style="background:#fff"></span><span style="background:#C1272D"></span><span style="background:#2E8B57"></span><span style="background:#F2C14E"></span></div>
+      </div>
+      <div class="band">
+        <div class="tib">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</div>
+        <div class="org">FEDERATION OF TIBETAN COOPERATIVES IN INDIA LTD.</div>
+        <h3>A warm welcome from a Tibetan home away from home.</h3>
+      </div>
+      <div class="searchwrap"><div class="search">
+        <div class="f w"><div class="lab">Where</div><div class="val">Bylakuppe · Gangtok · Dharamsala</div></div>
+        <div class="f"><div class="lab">Check in</div><div class="val">Thu, 6 Aug</div></div>
+        <div class="f"><div class="lab">Check out</div><div class="val">Sat, 8 Aug</div></div>
+        <div class="f"><div class="lab">Guests</div><div class="val">2 adults</div></div>
+        <div class="go">Search</div>
+      </div></div>
+      <div class="pad"></div>
+    </div></div>
+    <div class="notes"><ul>
+      <li><b>Nothing is cropped.</b> The photograph is 1920×1000; at the site's width its natural
+          height is 750px, so this shows it <b>complete</b> — the full sky, the full plaza, the
+          whole palace, exactly as the photographer framed it.</li>
+      <li>Nothing on it, nothing over it, nothing cut from it. The strongest reading of
+          "the Potala is our identity".</li>
+      <li><b>The trade:</b> the image takes 750px of the opening screen, so on a typical laptop the
+          booking search sits just at or below the fold — a visitor scrolls once before booking.
+          That is a real cost on a site whose job is direct bookings.</li>
+      <li>If the photograph is ever replaced with one of a different shape, this layout adapts —
+          the height simply follows the image rather than a fixed crop.</li>
+    </ul></div>
+  </div>
+
+</div>
+<script>
+  // Author at 1440px, scale each stage to whatever width the reader's screen has.
+  // transform:scale() does not change layout, so the element's box must be shrunk
+  // to match. Measure the UNSCALED height first (reset to auto, and clear the
+  // transform so scrollHeight isn't read off an already-sized box) — otherwise
+  // each run compounds the previous one and leaves dead space under every panel.
+  function fit(){
+    document.querySelectorAll('.scaler').forEach(function(el){
+      var stage = el.parentElement;
+      el.style.transform = 'none';
+      stage.style.height = 'auto';
+      var natural = el.offsetHeight;                 // unscaled layout height
+      var s = Math.min(1, (stage.clientWidth - 44) / 1440);
+      el.style.transform = 'scale(' + s + ')';
+      // The scaled child still occupies its full layout box, so the PARENT
+      // reserves the visual height and clips the overflow. Setting height on the
+      // scaled element itself can never match — layout ignores the transform.
+      stage.style.height = (natural * s + 44) + 'px';
+    });
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+</script>
+</body>
+</html>

@@ -23,6 +23,13 @@
       "date": "2026-07-22",
       "category": "Design",
       "description": "Click-through preview of the FTCI Manager mobile app for hotel staff — the full designed set: front desk (Today, Bookings, Calendar, Inbox, Check-in/out, Walk-in, Housekeeping), bookings & recovery, rates & demand, guest relationship, and compliance & finance (Form C, payments, roles, reports). 112 screens across 22 flows. Best viewed on a phone."
+    },
+    {
+      "file": "hero-options/index.html",
+      "title": "Home page — how the Potala is shown",
+      "date": "2026-07-30",
+      "category": "Design",
+      "description": "Why the dark shading over the Potala was removed, what was tested and rejected, and the two ways of showing the photograph — side by side."
     }
   ]
 }
