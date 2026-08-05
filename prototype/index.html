@@ -1245,19 +1245,51 @@ function lbOpen(i) { lbI=i; lbShow(); document.getElementById('lb').classList.ad
 function lbClose() { document.getElementById('lb').classList.remove('on'); }
 function lbNext() { lbI=(lbI+1)%GALLERY.length; lbShow(); }
 function lbPrev() { lbI=(lbI-1+GALLERY.length)%GALLERY.length; lbShow(); }
-/* hero: hold the still 5s, then fade in the looping film (1a desktop only) */
+/* hero: hold the still 5s, then fade in the looping film (1a desktop only).
+   The film is revealed ONLY once the player reports PLAYING. The old code
+   revealed it on the iframe's load event, which fires when YouTube's embed
+   document loads — several seconds before it renders a frame — so the landing
+   page showed a black rectangle, and whatever chrome the player happened to be
+   drawing (poster, play button, title bar), on top of the Potala.
+   The still is never removed: it sits underneath at full opacity, so a stall,
+   a blocked autoplay or an error leaves the palace on screen rather than a
+   black hole. Same reason the overlay is faded back out on error. */
+var HERO_ID='womj-nSCBhQ';
+function heroReveal(w) { if(w) w.style.opacity='1'; }
+function heroHide(w) { if(w) w.style.opacity='0'; }
+window.onYouTubeIframeAPIReady=function() {
+  document.querySelectorAll('[data-hero-yt]').forEach(function(f) {
+    var w=f.closest('.hero-yt');
+    /* YT.Player ADOPTS an existing iframe — it does not populate an empty one,
+       and playerVars are ignored for an adopted iframe. So every option has to
+       be in the src, and enablejsapi=1 is what makes the events fire at all. */
+    f.src='https://www.youtube.com/embed/'+HERO_ID
+      +'?autoplay=1&mute=1&loop=1&playlist='+HERO_ID+'&start=2'
+      +'&controls=0'          /* no control bar during playback */
+      +'&disablekb=1'         /* no keyboard handling — it is decoration */
+      +'&fs=0'                /* no fullscreen button */
+      +'&iv_load_policy=3'    /* no annotation overlays */
+      +'&rel=0&playsinline=1&modestbranding=1'
+      +'&enablejsapi=1&origin='+encodeURIComponent(location.origin);
+    new YT.Player(f, {
+      events: {
+        onReady: function(e) { e.target.mute(); e.target.playVideo(); },
+        onStateChange: function(e) {
+          if(e.data===YT.PlayerState.PLAYING) heroReveal(w);
+        },
+        onError: function() { heroHide(w); }
+      }
+    });
+  });
+};
 setTimeout(function() {
   document.querySelectorAll('[data-hero]').forEach(function(h) {
     h.classList.add('hero-live');
-    var f=h.querySelector('[data-hero-yt]');
-    if(f&&!f.src) {
-      f.addEventListener('load',function() {
-        var w=f.closest('.hero-yt'); if(w) w.style.opacity='1';
-      });
-      f.src='https://www.youtube.com/embed/womj-nSCBhQ?autoplay=1&mute=1&loop=1'
-        +'&playlist=womj-nSCBhQ&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&start=2';
-    }
   });
+  if(!document.querySelector('[data-hero-yt]')) return;
+  var s=document.createElement('script');
+  s.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
 },5000);
 render();
 </script>
