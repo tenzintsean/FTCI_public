@@ -1,0 +1,249 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One payment account per hotel — FTCI checklist</title>
+<style>
+  :root{
+    --maroon:#6E2639; --maroon-deep:#4A1626; --saffron:#E8A33D; --gold:#C99700;
+    --cream:#FAF6EF; --card:#FFFFFF; --ink:#2B2118; --muted:#7A6A5C;
+    --blue:#2456A6; --blue-soft:#EAF1FB; --red:#C0392B; --green:#2E7D4F;
+    --green-soft:#E9F5EE; --saffron-soft:#FFF3DC; --yellow:#E8C547;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font:16px/1.65 "Segoe UI",system-ui,-apple-system,sans-serif}
+  .flag{display:flex;height:8px}.flag div{flex:1}
+  header{background:linear-gradient(135deg,var(--maroon-deep),var(--maroon));color:#FDF6EA;
+         padding:42px 24px 34px;text-align:center}
+  header .bo{font-size:1.4rem;opacity:.9;display:block;margin-bottom:8px}
+  header h1{margin:0;font-size:2rem}
+  header p{max-width:760px;margin:12px auto 0;opacity:.93}
+  .rz{display:inline-block;background:#3395FF;color:#fff;font-weight:700;border-radius:6px;
+      padding:2px 10px;font-size:.9rem;letter-spacing:.3px}
+  .tag{display:inline-block;background:var(--saffron);color:var(--maroon-deep);font-weight:700;
+       border-radius:999px;padding:3px 15px;margin-top:16px;font-size:.92rem}
+  main{max-width:1000px;margin:0 auto;padding:24px 20px 64px}
+  section{margin-top:40px}
+  h2{color:var(--maroon);font-size:1.4rem;border-bottom:3px solid var(--saffron);
+     padding-bottom:6px;margin:0 0 16px}
+  h2 .ic{margin-right:8px}
+  h3{color:var(--maroon-deep);margin:22px 0 8px;font-size:1.1rem}
+  p{margin:10px 0}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid #Bcd}
+  a:hover{border-bottom-color:var(--blue)}
+  .who{display:inline-block;border-radius:999px;padding:1px 11px;font-weight:700;font-size:.8rem;color:#fff}
+  .who.client{background:var(--maroon)} .who.us{background:var(--blue)} .who.both{background:var(--green)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 4px;font-size:.9rem}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .card{background:var(--card);border-radius:12px;padding:18px 20px;
+        box-shadow:0 2px 10px rgba(74,22,38,.08);border-top:4px solid var(--saffron)}
+  .card h4{margin:0 0 8px;color:var(--maroon)}
+  .card.blue{border-top-color:var(--blue)} .card.green{border-top-color:var(--green)}
+  .card .big{font-size:1.7rem;display:block;margin-bottom:6px}
+  .callout{background:var(--saffron-soft);border-left:5px solid var(--saffron);border-radius:8px;
+           padding:14px 18px;margin:16px 0}
+  .callout.blue{background:var(--blue-soft);border-left-color:var(--blue)}
+  .callout.green{background:var(--green-soft);border-left-color:var(--green)}
+  .callout.alert{background:#FDEBEB;border-left-color:var(--red)}
+  ul.check{list-style:none;margin:0;padding:0}
+  ul.check li{background:var(--card);border-radius:8px;padding:12px 14px 12px 46px;margin:9px 0;
+        position:relative;box-shadow:0 1px 5px rgba(74,22,38,.06)}
+  ul.check li::before{content:"\2610";position:absolute;left:15px;top:9px;
+        font-size:1.3rem;line-height:1.4;color:var(--maroon)}
+  ul.check li.done::before{content:"\2611";color:var(--green)}
+  ul.check b{color:var(--maroon-deep)}
+  ul.check .note{display:block;color:var(--muted);font-size:.9rem;margin-top:3px}
+  .ask{background:var(--card);border:2px dashed var(--maroon);border-radius:10px;
+       padding:18px 20px;margin:14px 0;font-size:1rem;line-height:1.7}
+  .ask .lbl{display:block;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
+       color:var(--maroon);font-weight:700;margin-bottom:8px}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;
+        overflow:hidden;box-shadow:0 2px 10px rgba(74,22,38,.08);font-size:.94rem}
+  th{background:var(--maroon);color:#FDF6EA;text-align:left;padding:10px 12px}
+  td{padding:10px 12px;border-top:1px solid #EFE7DA;vertical-align:top}
+  tr:nth-child(even) td{background:#FBF8F2}
+  .pill{display:inline-block;border-radius:999px;padding:1px 9px;font-size:.78rem;font-weight:700;color:#fff}
+  .pill.free{background:var(--green)} .pill.fee{background:var(--saffron);color:var(--maroon-deep)}
+  .links{columns:2;column-gap:26px}
+  .links a{display:block;margin:7px 0;font-size:.92rem;break-inside:avoid}
+  /* break-after keeps a group heading with its first link; without it the
+     column split can strand a heading at the foot of column one. */
+  .links .grp{font-weight:700;color:var(--maroon);margin-top:14px;break-inside:avoid;break-after:avoid}
+  .verify-badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;
+        padding:2px 12px;font-size:.82rem;font-weight:700}
+  code{background:#F1E9DC;border-radius:4px;padding:1px 5px;font-size:.9em}
+  .bo{font-family:"Noto Serif Tibetan","Jomolhari","Microsoft Himalaya",serif}
+  footer{background:var(--maroon-deep);color:#E8D9C8;text-align:center;padding:22px;font-size:.85rem}
+  @media(max-width:640px){.links{columns:1}}
+</style>
+
+<div class="flag"><div style="background:var(--blue)"></div><div style="background:#fff"></div><div style="background:var(--red)"></div><div style="background:var(--green)"></div><div style="background:var(--yellow)"></div></div>
+<header>
+  <span class="bo" lang="bo">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</span>
+  <h1>One payment account per hotel</h1>
+  <p>A step-by-step checklist for giving <b>each hotel its own <span class="rz">Razorpay</span>
+  account and its own bank settlement</b> — while FTCI remains a single society under one PAN.</p>
+  <span class="tag">For FTCI · prepared 6 August 2026 · every link verified</span>
+</header>
+
+<main>
+
+<section>
+  <h2><span class="ic">🎯</span>What this achieves</h2>
+  <div class="callout">
+    Bylakuppe's Razorpay account is <b>already live</b>. This checklist covers the remaining
+    hotels. When it is done, a guest booking a room at Gangtok pays into
+    <b>Gangtok's own bank account</b>, and a guest booking at McLeod Ganj pays into
+    <b>McLeod Ganj's</b> — automatically, with no transfers between units and no manual
+    reconciliation at the end of the month. FTCI stays one legal entity throughout; nothing about
+    the society's registration changes.
+  </div>
+  <div class="cards">
+    <div class="card"><span class="big">🏨</span><h4>Money reaches the right hotel</h4>
+      Each property's takings settle straight into that property's current account.</div>
+    <div class="card green"><span class="big">🧾</span><h4>Cleaner books</h4>
+      Each unit's income is separated at source, so its accounts and its GST return match
+      what actually arrived in its bank.</div>
+    <div class="card blue"><span class="big">🔑</span><h4>FTCI keeps control</h4>
+      Every account is owned by FTCI. We are added only as a limited team member so we can
+      connect the website.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">✅</span>Step 1 — Two things to check first</h2>
+  <p>Both of these are quicker to sort out now than to discover halfway through.</p>
+  <div class="legend">
+    <span><span class="who client">FTCI</span> you do this</span>
+    <span><span class="who us">Us</span> the website team</span>
+    <span><span class="who both">Both</span> together</span>
+  </div>
+  <ul class="check">
+    <li><span class="who client">FTCI</span> <b>Does each hotel already have its own current
+      account, in FTCI's name?</b>
+      <span class="note">If any hotel does not, opening it is the slowest step in the whole
+      process — please start that with the bank straight away, ahead of anything on Razorpay's
+      side. The account holder name must match the entity PAN exactly; a mismatch is the single
+      most common cause of rejection.</span></li>
+    <li><span class="who client">FTCI</span> <b>Confirm the mobile number can be reused.</b>
+      <span class="note">Razorpay lets you open further accounts using the same mobile number and
+      email as the Bylakuppe account. If that number is already attached to several accounts under
+      different email addresses, this option is blocked — worth checking before you begin.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="ic">💬</span>Step 2 — One question to put to Razorpay before opening anything</h2>
+  <p>Please raise this from <b>inside the Razorpay dashboard</b> rather than by email — a request
+  raised while logged in is attached to your account, so their team can see your actual file.</p>
+  <div class="ask">
+    <span class="lbl">Copy and send this</span>
+    We are a Multi-State Cooperative Society with <b>one entity PAN</b>, operating four hotels in
+    four different states, each with its own <b>GSTIN</b> and its own current account. We need
+    settlements to go to each hotel's own bank account. Can we open <b>four separate merchant
+    accounts under the same PAN</b>, distinguished by GSTIN — and if so, what does each additional
+    account require? <b>We are not asking about Route.</b>
+  </div>
+  <div class="callout blue">
+    <b>Why we expect this to work.</b> GST issues a <b>separate registration number per state</b>
+    under a single PAN, and Razorpay allows one account per tax registration. Your hotels are in
+    four different states, so each already has its own GSTIN. We would like Razorpay to confirm
+    this in writing before you file anything, so that no time is spent on the wrong route.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">⚠️</span>Step 3 — One thing to decline</h2>
+  <div class="callout alert">
+    If Razorpay suggest <b>“Route”</b> or <b>“Linked Accounts”</b>, please <b>do not agree to it
+    on the call</b>. Say you will come back to them, and tell us.
+    <br><br>
+    Route is built for splitting a payment out to <b>third parties</b> who serve your customers —
+    for example a marketplace paying independent sellers. Your four hotels are all FTCI, so that
+    is not what is happening here. Route also now requires a minimum turnover, and an application
+    that is refused can remove the facility from the account altogether. Separate accounts per
+    hotel are simpler, and give each property direct control of its own settlements.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">📄</span>Step 4 — For each remaining hotel</h2>
+  <p>The same process as Bylakuppe, reusing the same entity PAN. Each account is reviewed
+  separately, and each review typically takes <b>3–5 working days</b>.</p>
+  <ul class="check">
+    <li><span class="who client">FTCI</span> <b>FTCI's entity PAN</b>
+      <span class="note">The same PAN as Bylakuppe — this does not change.</span></li>
+    <li><span class="who client">FTCI</span> <b>That hotel's GSTIN</b>
+      <span class="note">The state registration for the state the hotel operates in.</span></li>
+    <li><span class="who client">FTCI</span> <b>That hotel's own current account</b>
+      <span class="note">In FTCI's name, with the name matching the PAN exactly. Razorpay verifies
+      it with a small test deposit.</span></li>
+    <li><span class="who client">FTCI</span> <b>Address proof for that property</b></li>
+    <li><span class="who client">FTCI</span> <b>Board resolution or authorisation letter</b>
+      <span class="note">Naming the office-bearer who will operate that unit's account.</span></li>
+    <li><span class="who client">FTCI</span> <b>Registration certificate and bye-laws</b>
+      <span class="note">The society's documents, submitted again for each account.</span></li>
+  </ul>
+  <h3>Progress across the four properties</h3>
+  <div class="scroll">
+  <table>
+    <tr><th>Hotel</th><th>State</th><th>Razorpay account</th><th>Own current account</th></tr>
+    <tr><td><b>FTCI Cottages, Bylakuppe</b></td><td>Karnataka</td>
+        <td><span class="pill free">Live</span></td><td>Please confirm which account</td></tr>
+    <tr><td><b>Hotel Tibet, Gangtok</b></td><td>Sikkim</td>
+        <td><span class="pill fee">To open</span></td><td>To confirm</td></tr>
+    <tr><td><b>Hotel Tibet, McLeod Ganj</b></td><td>Himachal Pradesh</td>
+        <td><span class="pill fee">To open</span></td><td>To confirm</td></tr>
+    <tr><td><b>Nyamdel House, Delhi</b></td><td>Delhi</td>
+        <td><span class="pill fee">To open</span></td><td>To confirm</td></tr>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🔒</span>Step 5 — When an account is approved</h2>
+  <ul class="check">
+    <li><span class="who client">FTCI</span> <b>Tell us the account is live.</b></li>
+    <li><span class="who both">Both</span> <b>Add us as an <u>Admin</u> team member — not Owner.</b>
+      <span class="note">Admin lets us build and connect the website. It does not let us change
+      ownership or alter your bank details. FTCI keeps full control of the account throughout.</span></li>
+    <li><span class="who both">Both</span> <b>Share the technical keys safely, when we ask for them.</b>
+      <span class="note">We will only need these at the point we connect that hotel. The secret key
+      is shown once and must travel through a <b>password manager</b> — never over email, WhatsApp
+      or chat.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="ic">❓</span>One question we need answered</h2>
+  <div class="callout">
+    <b>Is Nyamdel House in Delhi registered under the same FTCI PAN?</b>
+    It trades under its own name, so we would like to be certain. If it is a separate legal entity
+    with its own PAN, it needs an ordinary new signup rather than an additional account under
+    FTCI — different paperwork, and worth knowing before you start.
+  </div>
+</section>
+
+<section>
+  <h2><span class="ic">🔗</span>Reference links <span class="verify-badge">✓ each link checked live · 6 Aug 2026</span></h2>
+  <div class="links">
+    <span class="grp">Opening the accounts</span>
+    <a href="https://razorpay.com/docs/payments/set-up/">Setting up a Razorpay account (and using the same number for more than one)</a>
+    <a href="https://razorpay.com/docs/payments/business-types-kyc-documents/">KYC documents required, by business type</a>
+    <a href="https://razorpay.com/docs/payments/account-activation-support/">Help with account activation</a>
+    <span class="grp">Giving us access</span>
+    <a href="https://razorpay.com/docs/payments/dashboard/account-settings/manage-team/">Inviting a team member</a>
+    <span class="grp">For reference only — not the path we are taking</span>
+    <a href="https://razorpay.com/docs/payments/route/faqs/">Route: eligibility rules and FAQs</a>
+    <span class="grp">GST</span>
+    <a href="https://www.gst.gov.in/">GST portal</a>
+  </div>
+</section>
+
+</main>
+<div class="flag"><div style="background:var(--blue)"></div><div style="background:#fff"></div><div style="background:var(--red)"></div><div style="background:var(--green)"></div><div style="background:var(--yellow)"></div></div>
+<footer>
+  <span class="bo" lang="bo">བཀྲ་ཤིས་བདེ་ལེགས།</span><br>
+  Prepared for the Federation of Tibetan Cooperatives in India · all links verified live 2026-08-06 ·
+  requirements to be confirmed with Razorpay before filing
+</footer>

@@ -11,6 +11,13 @@
       "description": "What FTCI needs to do to enable direct online payments via Razorpay — the KYC documents to gather, the step-by-step process, the costs, and how to start collecting payments right away."
     },
     {
+      "file": "documents/hotel-payment-accounts-2026-08-06.html",
+      "title": "One Payment Account per Hotel — Checklist",
+      "date": "2026-08-06",
+      "category": "Payments",
+      "description": "A step-by-step checklist for giving each hotel its own Razorpay account and its own bank settlement, while FTCI remains a single society under one PAN — what to check first, the one question to put to Razorpay before opening anything, the documents each hotel needs, and what to avoid."
+    },
+    {
       "file": "prototype/index.html",
       "title": "Guest Website — Interactive Preview",
       "date": "2026-08-05",
