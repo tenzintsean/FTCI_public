@@ -66,9 +66,12 @@
   .pill.free{background:var(--green)} .pill.fee{background:var(--saffron);color:var(--maroon-deep)}
   .links{columns:2;column-gap:26px}
   .links a{display:block;margin:7px 0;font-size:.92rem;break-inside:avoid}
-  /* break-after keeps a group heading with its first link; without it the
-     column split can strand a heading at the foot of column one. */
-  .links .grp{font-weight:700;color:var(--maroon);margin-top:14px;break-inside:avoid;break-after:avoid}
+  /* Each group is one box that the column split cannot break. break-after on
+     the heading alone was not enough — Chrome stranded "Giving us access" at
+     the foot of column one with its link at the top of column two, which read
+     as an empty heading. Wrapping the whole group is the reliable fix. */
+  .links .grp{font-weight:700;color:var(--maroon);margin-top:14px}
+  .linkgrp{break-inside:avoid;page-break-inside:avoid;display:block;margin-bottom:4px}
   .verify-badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;
         padding:2px 12px;font-size:.82rem;font-weight:700}
   code{background:#F1E9DC;border-radius:4px;padding:1px 5px;font-size:.9em}
@@ -245,16 +248,24 @@
 <section>
   <h2><span class="ic">🔗</span>Reference links <span class="verify-badge">✓ each link checked live · 6 Aug 2026</span></h2>
   <div class="links">
-    <span class="grp">Opening the accounts</span>
-    <a href="https://razorpay.com/docs/payments/set-up/">Setting up a Razorpay account (and using the same number for more than one)</a>
-    <a href="https://razorpay.com/docs/payments/business-types-kyc-documents/">KYC documents required, by business type</a>
-    <a href="https://razorpay.com/docs/payments/account-activation-support/">Help with account activation</a>
-    <span class="grp">Giving us access</span>
-    <a href="https://razorpay.com/docs/payments/dashboard/account-settings/manage-team/">Inviting a team member</a>
-    <span class="grp">For reference only — not the path we are taking</span>
-    <a href="https://razorpay.com/docs/payments/route/faqs/">Route: eligibility rules and FAQs</a>
-    <span class="grp">GST</span>
-    <a href="https://www.gst.gov.in/">GST portal</a>
+    <div class="linkgrp">
+      <span class="grp">Opening the accounts</span>
+      <a href="https://razorpay.com/docs/payments/set-up/">Setting up a Razorpay account (and using the same number for more than one)</a>
+      <a href="https://razorpay.com/docs/payments/business-types-kyc-documents/">KYC documents required, by business type</a>
+      <a href="https://razorpay.com/docs/payments/account-activation-support/">Help with account activation</a>
+    </div>
+    <div class="linkgrp">
+      <span class="grp">Giving us access</span>
+      <a href="https://razorpay.com/docs/payments/dashboard/account-settings/manage-team/">Inviting a team member to your Razorpay account</a>
+    </div>
+    <div class="linkgrp">
+      <span class="grp">GST</span>
+      <a href="https://www.gst.gov.in/">GST portal — check a registration</a>
+    </div>
+    <div class="linkgrp">
+      <span class="grp">For reference only — not the path we are taking</span>
+      <a href="https://razorpay.com/docs/payments/route/faqs/">Route: eligibility rules and FAQs</a>
+    </div>
   </div>
 </section>
 
