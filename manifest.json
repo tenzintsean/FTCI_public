@@ -37,6 +37,13 @@
       "date": "2026-07-30",
       "category": "Design",
       "description": "Why the dark shading over the Potala was removed, what was tested and rejected, and the two ways of showing the photograph — side by side."
+    },
+    {
+      "file": "documents/domain-registration-2026-08-11.html",
+      "title": "Registering ftcihotels.org — step by step",
+      "date": "2026-08-11",
+      "category": "Setup",
+      "description": "A 20-minute guide for registering the booking site's web address. Needed before confirmation emails can be switched on."
     }
   ]
 }

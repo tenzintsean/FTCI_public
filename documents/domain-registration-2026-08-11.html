@@ -1,0 +1,256 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registering ftcihotels.org — step by step</title>
+<style>
+  :root{
+    --maroon:#6E2639; --maroon-deep:#4A1626; --saffron:#E8A33D;
+    --cream:#FAF6EF; --card:#FFFFFF; --ink:#2B2118; --muted:#7A6A5C;
+    --blue:#2456A6; --red:#C0392B; --green:#2E7D4F; --yellow:#E8C547;
+    --line:#E6DACB;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font:17px/1.7 Georgia,"Times New Roman",serif}
+  .flag{display:flex;height:8px}.flag div{flex:1}
+  header{background:linear-gradient(150deg,var(--maroon-deep),var(--maroon));color:#FDF6EA;
+         text-align:center;padding:48px 24px 38px}
+  header .bo{font-size:1.6rem;display:block;margin-bottom:10px;opacity:.95}
+  header h1{margin:0;font-size:2rem;font-weight:600}
+  header p{max-width:660px;margin:14px auto 0;font-size:1.04rem;opacity:.94}
+  header .who{display:inline-block;background:var(--saffron);color:var(--maroon-deep);
+        border-radius:999px;padding:5px 20px;font-weight:700;margin-top:18px;
+        font-family:system-ui,sans-serif;font-size:.95rem}
+  main{max-width:820px;margin:0 auto;padding:22px 20px 64px}
+  section{margin-top:38px}
+  h2{color:var(--maroon);font-size:1.42rem;margin:0 0 14px}
+  .lede{background:#FFF3DC;border-radius:14px;padding:20px 24px;
+        border-left:6px solid var(--saffron);margin-top:20px}
+  .lede p{margin:0 0 10px} .lede p:last-child{margin:0}
+  ol.steps{list-style:none;margin:0;padding:0;counter-reset:step}
+  ol.steps > li{position:relative;padding:0 0 26px 54px;border-left:3px solid var(--saffron);
+        margin-left:18px}
+  ol.steps > li:last-child{border-left-color:transparent}
+  ol.steps > li::before{counter-increment:step;content:counter(step);position:absolute;
+        left:-18px;top:-4px;width:33px;height:33px;border-radius:50%;
+        background:var(--maroon);color:#FDF6EA;display:flex;align-items:center;
+        justify-content:center;font-family:system-ui,sans-serif;font-weight:700;
+        border:3px solid var(--saffron)}
+  ol.steps h3{margin:0 0 8px;color:var(--maroon);font-size:1.12rem}
+  ol.steps p{margin:0 0 9px} ol.steps p:last-child{margin:0}
+  .box{background:var(--card);border-radius:12px;padding:14px 18px;margin:10px 0;
+       box-shadow:0 2px 9px rgba(74,22,38,.08);font-size:.96rem}
+  .box.type{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.95rem;
+            background:#F3EADF;color:var(--maroon-deep);word-break:break-all}
+  .warn{background:#FDECEA;border-left:6px solid var(--red);border-radius:12px;
+        padding:16px 20px;margin:12px 0}
+  .warn b{color:var(--maroon-deep)}
+  .ok{background:#E9F5EC;border-left:6px solid var(--green);border-radius:12px;
+      padding:16px 20px;margin:12px 0}
+  .stop{background:#FFF4DE;border:2px dashed var(--saffron);border-radius:12px;
+        padding:18px 22px;margin:14px 0}
+  .stop h4{margin:0 0 8px;color:var(--maroon-deep);font-size:1.05rem}
+  ul.check{list-style:none;margin:10px 0 0;padding:0}
+  ul.check li{position:relative;padding:0 0 9px 30px}
+  ul.check li::before{content:"☐";position:absolute;left:2px;top:-1px;
+        color:var(--saffron);font-size:1.25rem;line-height:1}
+  ul.no{list-style:none;margin:10px 0 0;padding:0}
+  ul.no li{position:relative;padding:0 0 8px 30px}
+  ul.no li::before{content:"✕";position:absolute;left:4px;top:0;color:var(--red);
+        font-weight:700;font-family:system-ui,sans-serif}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;
+        overflow:hidden;box-shadow:0 2px 9px rgba(74,22,38,.08);font-size:.96rem;margin-top:10px}
+  th{background:var(--maroon);color:#FDF6EA;text-align:left;padding:11px 14px;
+     font:600 .9rem system-ui,sans-serif}
+  td{padding:11px 14px;border-top:1px solid var(--line)}
+  footer{background:var(--maroon-deep);color:#E8D9C8;text-align:center;padding:26px 20px;
+         font-size:.92rem}
+  footer .bo{font-size:1.15rem;display:block;margin-bottom:6px}
+  .bo{font-family:"Noto Serif Tibetan","Jomolhari","Microsoft Himalaya",serif}
+  @media(max-width:600px){ header h1{font-size:1.6rem} body{font-size:16.5px} }
+</style>
+
+<div class="flag">
+  <div style="background:var(--blue)"></div><div style="background:#fff"></div>
+  <div style="background:var(--red)"></div><div style="background:var(--green)"></div>
+  <div style="background:var(--yellow)"></div>
+</div>
+
+<header>
+  <span class="bo" lang="bo">༄༅། བོད་མིའི་སྤྱི་མཐུན་མཉམ་འབྲེལ།</span>
+  <h1>Registering <span style="white-space:nowrap">ftcihotels.org</span></h1>
+  <p>A step-by-step guide. About <b>20 minutes</b>, one card payment, no technical
+     knowledge needed. Please complete it <b>today</b> — several other things are waiting
+     on it.</p>
+  <div class="who">For Tsetan</div>
+</header>
+
+<main>
+
+<div class="lede">
+  <p><b>What this is.</b> The new FTCI Hotels booking website needs a web address of its own.
+     We are registering <b>ftcihotels.org</b>.</p>
+  <p><b>Why it can't wait.</b> The website's confirmation emails — the ones that tell a guest
+     we've received their booking — can only be set up once we own the address. Until then no
+     email can be sent, and email is how the whole booking system talks to guests and to hotel
+     staff. <b>This one task is holding up several others.</b></p>
+  <p><b>Note:</b> <code>ftcihotels.com</code> is already registered and in use for the existing
+     site. That is a separate conversation and does not block this. Registering the
+     <b>.org</b> now lets everything else move forward today.</p>
+</div>
+
+<!-- ═════════ BEFORE ═════════ -->
+<section>
+  <h2>Before you start</h2>
+  <p>Have these three things to hand:</p>
+  <ul class="check">
+    <li>A <b>payment card</b> that works for international online payments (the registry
+      charges in US dollars). Expect roughly <b>US $10–15 per year</b>.</li>
+    <li>An <b>email address you will keep</b> — this becomes the owner's contact for the
+      domain. Use a permanent FTCI address, not a personal one you might stop using.</li>
+    <li><b>FTCI's official details</b>: registered organisation name, postal address and a phone
+      number. These go on the ownership record.</li>
+  </ul>
+  <div class="ok">
+    <b>Good news:</b> there is nothing to install and nothing to configure. You are buying a name
+    and then handing us the keys. We do the technical part.
+  </div>
+</section>
+
+<!-- ═════════ STEPS ═════════ -->
+<section>
+  <h2>The steps</h2>
+
+  <ol class="steps">
+
+    <li>
+      <h3>Create a Cloudflare account (or sign in)</h3>
+      <p>Go to:</p>
+      <div class="box type">https://dash.cloudflare.com/sign-up</div>
+      <p>Use the permanent email address from the list above. Confirm the verification email
+        Cloudflare sends you, then sign in.</p>
+      <p><b>Why Cloudflare?</b> They sell domains at exactly what the registry charges — no
+        markup and no renewal price jump, which most sellers add. They are also where the new
+        website itself will run, so keeping the name in the same place means one fewer account
+        to manage.</p>
+    </li>
+
+    <li>
+      <h3>Open the domain registration page</h3>
+      <p>Once signed in, go straight to:</p>
+      <div class="box type">https://dash.cloudflare.com/?to=/:account/registrar/register</div>
+      <p>Or from the menu: <b>Domain Registration</b> → <b>Register Domains</b>.</p>
+    </li>
+
+    <li>
+      <h3>Search for the name</h3>
+      <p>Type exactly this into the search box:</p>
+      <div class="box type">ftcihotels.org</div>
+      <p>It should come up as <b>available</b>. We checked it this morning against the official
+        registry.</p>
+
+      <div class="stop">
+        <h4>⚠️ Stop here if either of these happens</h4>
+        <p style="margin:0 0 8px"><b>(a) It says the name is taken</b>, or <b>(b) Cloudflare
+          doesn't offer <code>.org</code> or won't accept your card.</b></p>
+        <p style="margin:0"><b>Don't improvise and don't buy a different name.</b> Message
+          Rajesh with a screenshot and we'll switch to the backup plan immediately. A wrong name
+          registered in a hurry is much harder to undo than a ten-minute delay.</p>
+      </div>
+    </li>
+
+    <li>
+      <h3>Choose the longest term offered — at least 3 years</h3>
+      <p>Pick 5 or 10 years if the option is there; 3 years at minimum.</p>
+      <div class="warn">
+        <b>This matters more than the money saved.</b> If a domain is ever allowed to lapse, the
+        website <i>and every email address on it</i> stop working the same day — and someone else
+        can buy the name. A longer term removes that risk for years at a time. The difference in
+        cost is a few dollars.
+      </div>
+    </li>
+
+    <li>
+      <h3>Enter FTCI's details as the owner</h3>
+      <p>When asked for registrant or contact information, use <b>FTCI's official organisation
+        details</b> — not personal ones.</p>
+      <table>
+        <tr><th style="width:38%">Field</th><th>What to enter</th></tr>
+        <tr><td>Organisation</td><td>FTCI's full registered name</td></tr>
+        <tr><td>Email</td><td>The permanent FTCI address from the checklist</td></tr>
+        <tr><td>Address &amp; phone</td><td>FTCI's official postal address and number</td></tr>
+      </table>
+      <p style="margin-top:10px">This is the record of who owns the name. Putting FTCI on it now
+        avoids a paperwork exercise later. Your personal details are <b>hidden from public view
+        automatically</b> — Cloudflare redacts them at no cost.</p>
+    </li>
+
+    <li>
+      <h3>Do not add anything else</h3>
+      <p>You only need the domain name. If you are offered any of the following, <b>decline all
+        of them</b>:</p>
+      <ul class="no">
+        <li><b>Web hosting</b> — the site runs somewhere else already</li>
+        <li><b>Email hosting or mailboxes</b> — we set this up differently, at no cost</li>
+        <li><b>An SSL certificate</b> — included free</li>
+        <li><b>WHOIS / privacy protection</b> — already included free</li>
+        <li><b>Website builders, SEO packages, security add-ons</b></li>
+      </ul>
+      <p>Cloudflare generally doesn't push these. If you end up on a different site because of
+        the backup plan, you will see all of them — say no to every one.</p>
+    </li>
+
+    <li>
+      <h3>Pay and confirm</h3>
+      <p>Complete the payment. You should get a confirmation email within a few minutes.</p>
+      <p><b>Take a screenshot</b> of the confirmation screen showing the domain name and the
+        number of years.</p>
+    </li>
+
+    <li>
+      <h3>Give us access — this is the part that unblocks the work</h3>
+      <p>Registering the name isn't enough on its own; we need permission to add the technical
+        records that make email work.</p>
+      <p>In Cloudflare, go to <b>Manage Account</b> → <b>Members</b> → <b>Invite</b>, and invite
+        Rajesh's email address with <b>Administrator</b> access.</p>
+      <div class="ok">
+        <b>You stay in control.</b> The account and the domain remain yours. An invitation only
+        lets us add the settings the website needs, and you can remove it at any time.
+      </div>
+    </li>
+
+    <li>
+      <h3>Send back three things</h3>
+      <ul class="check">
+        <li>The confirmation screenshot</li>
+        <li>Which email address you used for the account</li>
+        <li>Confirmation that the invitation has been sent</li>
+      </ul>
+      <p style="margin-top:10px">Once those arrive we can finish the email setup the same day.</p>
+    </li>
+
+  </ol>
+</section>
+
+<!-- ═════════ WHAT NEXT ═════════ -->
+<section>
+  <h2>What happens after you're done</h2>
+  <table>
+    <tr><th style="width:34%">Step</th><th>Who</th></tr>
+    <tr><td>Add the records that let the site send email that reaches inboxes</td><td>Us</td></tr>
+    <tr><td>Point the address at the new booking website</td><td>Us</td></tr>
+    <tr><td>Test a real booking email end to end</td><td>Us</td></tr>
+    <tr><td>Transfer the domain into FTCI's own account when convenient</td><td>Together, later</td></tr>
+  </table>
+  <div class="lede" style="margin-top:20px">
+    <p><b>If anything at all looks different from this guide, stop and ask.</b> Screens change,
+      and a five-minute question is cheaper than undoing a wrong purchase. There is no step here
+      you are expected to figure out on your own.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span class="bo" lang="bo">བཀྲ་ཤིས་བདེ་ལེགས།</span>
+  Prepared for the Federation of Tibetan Cooperatives in India · 11 August 2026
+</footer>
