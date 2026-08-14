@@ -44,6 +44,13 @@
       "date": "2026-08-11",
       "category": "Setup",
       "description": "A 20-minute guide for registering the booking site's web address, including which form field decides who owns it. Needed before confirmation emails can be switched on."
+    },
+    {
+      "file": "documents/client-questions-2026-08-14.html",
+      "title": "Room Details, Directions and Policies — Please Check",
+      "date": "2026-08-14",
+      "category": "Content",
+      "description": "The room descriptions, maps and policy panels now on the new website were filled in from the design mock-up rather than FTCI's own records. This sheet lists every one of those figures — beds, maximum guests, views, room sizes, airport and railway distances, check-out time and the children policy — with a column to write the correction beside it. The maximum-guests figures matter most: they are what tell a guest online whether a room fits their family."
     }
   ]
 }
