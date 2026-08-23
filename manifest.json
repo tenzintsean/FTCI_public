@@ -53,11 +53,18 @@
       "description": "The room descriptions, maps and policy panels now on the new website were filled in from the design mock-up rather than FTCI's own records. This sheet lists every one of those figures — beds, maximum guests, views, room sizes, airport and railway distances, check-out time and the children policy — with a column to write the correction beside it. The maximum-guests figures matter most: they are what tell a guest online whether a room fits their family."
     },
     {
-      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23.pdf",
-      "title": "Transfer of ftcihotels.com — request to Webnock",
+      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-reference.pdf",
+      "title": "Transfer of ftcihotels.com — reference copy",
       "date": "2026-08-23",
       "category": "Domains",
-      "description": "The formal letter asking Webnock to transfer the .com domain name and control of its DNS records to FTCI, so both domains can be run as one web presence. PDF, for signing and sending."
+      "description": "The letter asking Webnock to transfer the .com domain and control of its DNS to FTCI. This copy labels each box that still needs completing — use it to check what belongs where."
+    },
+    {
+      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-print.pdf",
+      "title": "Transfer of ftcihotels.com — to print and sign",
+      "date": "2026-08-23",
+      "category": "Domains",
+      "description": "The same letter with the four remaining boxes left blank, for printing and completing by hand before signing."
     }
   ]
 }
