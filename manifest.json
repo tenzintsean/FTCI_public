@@ -53,18 +53,18 @@
       "description": "The room descriptions, maps and policy panels now on the new website were filled in from the design mock-up rather than FTCI's own records. This sheet lists every one of those figures — beds, maximum guests, views, room sizes, airport and railway distances, check-out time and the children policy — with a column to write the correction beside it. The maximum-guests figures matter most: they are what tell a guest online whether a room fits their family."
     },
     {
-      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-reference.pdf",
-      "title": "Transfer of ftcihotels.com — reference copy",
+      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-print.pdf",
+      "title": "Transfer of ftcihotels.com — the copy to send",
       "date": "2026-08-23",
       "category": "Domains",
-      "description": "For Ms Tashi. The letter asking Webnock to transfer the .com domain and control of its DNS to FTCI. This copy labels the boxes still to be completed — keep it beside you as a guide."
+      "description": "For Ms Tashi to download, print and have signed, then send to Webnock. Only the two signature dates are left blank. THIS is the copy that goes to Webnock."
     },
     {
-      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-print.pdf",
-      "title": "Transfer of ftcihotels.com — to print and sign",
+      "file": "documents/FTCI-domain-transfer-request-ftcihotels.com-2026-08-23-INTERNAL-reference.pdf",
+      "title": "Transfer of ftcihotels.com — INTERNAL reference copy",
       "date": "2026-08-23",
       "category": "Domains",
-      "description": "For Ms Tashi to download, print and have signed. The same letter with only the two signature dates left blank."
+      "description": "INTERNAL — do not send this one to Webnock. Same letter, with the blanks labelled so you can see what belongs where. Every page is marked."
     }
   ]
 }
