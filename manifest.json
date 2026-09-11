@@ -39,13 +39,6 @@
       "description": "Why the dark shading over the Potala was removed, what was tested and rejected, and the two ways of showing the photograph — side by side."
     },
     {
-      "file": "documents/domain-registration-2026-08-11.html",
-      "title": "Registering ftcihotels.org — step by step",
-      "date": "2026-08-11",
-      "category": "Setup",
-      "description": "A 20-minute guide for registering the booking site's web address, including which form field decides who owns it. Needed before confirmation emails can be switched on."
-    },
-    {
       "file": "documents/client-questions-2026-08-14.html",
       "title": "Room Details, Directions and Policies — Please Check",
       "date": "2026-08-14",
@@ -72,6 +65,13 @@
       "date": "2026-09-11",
       "category": "Domains",
       "description": "Step by step for Tsetan: using the Domain Secret from Webnock to move ftcihotels.com to Namecheap, with nothing more needed from Webnock."
+    },
+    {
+      "file": "documents/domain-registration-2026-08-11.html",
+      "title": "OLD (completed) — Registering ftcihotels.org",
+      "date": "2026-08-11",
+      "category": "Setup",
+      "description": "Old and stale: finished on 11 August 2026 and kept for reference only. For the current domain step, see “Moving ftcihotels.com into your own account”."
     }
   ]
 }
