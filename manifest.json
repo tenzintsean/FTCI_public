@@ -65,6 +65,13 @@
       "date": "2026-08-23",
       "category": "Domains",
       "description": "INTERNAL — do not send this one to Webnock. Same letter, with the blanks labelled so you can see what belongs where. Every page is marked."
+    },
+    {
+      "file": "documents/domain-transfer-namecheap-2026-09-11.html",
+      "title": "Moving ftcihotels.com into your own account",
+      "date": "2026-09-11",
+      "category": "Domains",
+      "description": "Step by step for Tsetan: using the Domain Secret from Webnock to move ftcihotels.com to Namecheap, with nothing more needed from Webnock."
     }
   ]
 }
